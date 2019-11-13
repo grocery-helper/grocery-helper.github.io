@@ -1,16 +1,15 @@
 <?php
-  class Date {
-    public $day;
-    public $month;
-    public $year;
-
-    public function __construct() {
-      $this->day = 0
-      $this->month = 0
-      $this->year = 0
-    }
-
-  }
+  // class DateTime {
+  //   public $day;
+  //   public $month;
+  //   public $year;
+  //
+  //   public function __construct() {
+  //     $this->day = 0
+  //     $this->month = 0
+  //     $this->year = 0
+  //   }
+  // }
 
   class User {
     public $userName;
@@ -54,13 +53,16 @@
 
   class FoodItem {
       public $foodName = "";
-      public $purchaseDate = new Date;
-      public $expirationDate = new Date
+      public $purchaseDate = new DateTime; //DateTime is a php class
+      public $expirationDate = new DateTime;
       public $shelfLifeInDays = 0;
       public $inGroceryList = FALSE;
       public $inInventoryList = FALSE;
       public $inFavoritesList = FALSE;
 
+      public function __construct() {
+        $this->purchaseDate = new DateTime('NOW')
+      }
       public function getName(): string {
           return $this->foodName
       }
@@ -83,9 +85,9 @@
           //else return false
       }
 
-      //EDIT THIS!!!
       public function setExpirationDate() { //takes the shelf life and adds it to the purchase date
-          $this->expirationDate = $this->purchaseDate + $this->shelfLife
+          $this->expirationDate = new DateTime('NOW')
+          date_add($this->purchaseDate, new DateInterval('P'.$this->.'D'))
       }
 
       public function addToGroceryList() {
