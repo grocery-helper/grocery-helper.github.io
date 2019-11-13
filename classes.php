@@ -12,6 +12,7 @@
   // }
 
   class User {
+
     public $userName;
     public $Password;
 
@@ -52,17 +53,25 @@
   }
 
   class FoodItem {
-      public $foodName = "";
-      public $purchaseDate = new DateTime; //DateTime is a php class
-      public $expirationDate = new DateTime;
-      public $shelfLifeInDays = 0;
-      public $inGroceryList = FALSE;
-      public $inInventoryList = FALSE;
-      public $inFavoritesList = FALSE;
+
+      public $foodName;
+      public $purchaseDate;
+      public $expirationDate;
+      public $shelfLifeInDays;
+      public $inGroceryList;
+      public $inInventoryList;
+      public $inFavoritesList;
 
       public function __construct() {
-        $this->purchaseDate = new DateTime('NOW')
+        $this-> $foodName = "";
+        $this->purchaseDate = new DateTime('NOW');
+        $this-> $expirationDate = new DateTime('NOW');
+        $this-> $shelfLifeInDays = 0;
+        $this-> $inGroceryList = FALSE;
+        $this-> $inInventoryList = FALSE;
+        $this-> $inFavoritesList = FALSE;
       }
+
       public function getName(): string {
           return $this->foodName
       }
