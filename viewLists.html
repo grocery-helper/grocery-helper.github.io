@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Grocery Helper</title>
+	<title>View Lists</title>
 
 	<!-- SEO -->
 	<meta charset="utf-8" http-equiv="content-type" content="text/html">
@@ -46,13 +46,13 @@
 	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 		<ul class="navbar-nav stroke">
 			<li class="navbar-item">
-				<a class="nav-link" href="#">Home</a>
+				<a class="nav-link" href="index.html">Home</a>
 			</li>
 			<li class="navbar-item">
-				<a class="nav-link" href="helpPage.html">Help</a>
+				<a class="nav-link" href="#">Help</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="viewLists.html">My Lists</a>
+				<a class="nav-link" href="#">My Lists</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link"href="#">Login</a>
@@ -61,20 +61,22 @@
 	</div>
 </nav>
 
+<div class="break"></div>
 
-<!-- CONTAINER: Description + Button -->
-<div class="container-fluid">
-	<img src="logo.png" class="center">
-
-	<div class="container">
-		<h1>Build smart Grocery Lists.</h1>
-		<p>Grocery Helper analyzes your past shopping behavior. We keep track so, you don't have to!</p>
-		<p>For instance, we remind you of when items are about to expire.</p>
-		<p>No other grocery app does that!</p>
-		<button class="btn">Get Started</button>
-	</div>
+<!-- COLUMNS -->
+<div class="container lists">
+  <div class="row">
+    <div class="list col-md-6">
+      <h2>My Lists</h2>
+    </div>
+    <div class="inv col-md-3 col-md-offset-1">
+      <h2>Inventory</h2>
+    </div>
+    <div class="fav col-md-3">
+      <h2>Favorites</h2>
+    </div>
 </div>
-
+</div>
 
 </body>
 </html>
