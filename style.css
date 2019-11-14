@@ -44,7 +44,7 @@
 		width: 100%;
 	}
 
-/*CONTAINER*/
+/*CONTAINER (index.html)*/
 .container-fluid{
 	height: 734px;
 	/*background-color: rgb(119, 187, 177, 0.9);*/
@@ -80,18 +80,38 @@
     opacity: 0.8;
 }
 
-/*HELP*/
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-	
+.break{
+	height: 60px;
+	background-color: white;	
 }
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+/*CONTAINER (viewLists.html)*/
+/*
+.lists{
+	height: 100%;
+	display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 0 0; /*set left/right padding according to needs
+}
+*/
+.row{
+	height: 670px;
+}
+.list{
+	/*background: rgb(32, 32, 32, 0.4);*/
+	 border-style: solid;
+	 border-radius: 10px;
+	 border-color: rgb(119, 187, 177, 0.8);
+}
+.inv{
+	/*background: rgb(32, 32, 32, 0.6);*/
+	border-style: solid;
+	border-radius: 10px;
+	border-color: rgb(119, 187, 177, 0.8);
+}
+.fav{
+	/*background: rgb(32, 32, 32, 0.8);*/
+	border-style: solid;
+	border-radius: 10px;
+	border-color: rgb(119, 187, 177, 0.8);
 }
