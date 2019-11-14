@@ -1,0 +1,77 @@
+	.navbar{
+		/*background-color: white;*/
+		background-color: rgb(119, 187, 177);
+	  	border: none;
+	}
+
+	.navbar .navbar-toggler{
+		border-color: white;
+		color: white;
+	}
+/* important to remove hover */
+	.navbar-brand{
+		color: white !important;
+		position: relative;
+	}
+
+/* underline on hover */
+/* https://codepen.io/maheshambure21/pen/QwXaRw */
+
+	.collapse ul.navbar-nav>li>a{
+		color:  white;
+	}
+
+	.collapse ul.stroke>li>a{
+		position: relative;
+	}
+
+	.collapse ul.stroke>li>a:after{
+		  position: absolute;
+		  bottom: 0;
+		  left: 0;
+		  right: 0;
+		  margin: auto;
+		  width: 0%;
+		  content: '.';
+		  color: transparent;
+		  /*background:   rgb(119, 187, 177, 0.9);*/
+		  background: white;
+		  height: 1px;
+	}
+
+	.collapse ul.stroke>li>a:hover:after{
+		width: 100%;
+	}
+
+/*MIDDLE*/
+.container-fluid{
+	height: 734px;
+	/*background-color: rgb(119, 187, 177, 0.9);*/
+	background-color: white;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+.container h1, p{
+	color: rgb(119, 187, 177);
+	text-align: center;
+}
+
+.container .btn {
+	  background-color:rgb(119, 187, 177);
+	  border: none;
+	  color: white;
+	  padding: 12px 30px;
+	  cursor: pointer;
+	  font-size: 17px;
+	  text-align: center;
+	  font-family: Arial;
+	  margin-left: 45%;
+	  margin-right: 40%;
+	}
+/*FOOTER*/
+
