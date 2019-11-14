@@ -1,3 +1,4 @@
+/*NAVBAR*/
 	.navbar{
 		/*background-color: white;*/
 		background-color: rgb(119, 187, 177);
@@ -43,7 +44,7 @@
 		width: 100%;
 	}
 
-/*MIDDLE*/
+/*CONTAINER*/
 .container-fluid{
 	height: 734px;
 	/*background-color: rgb(119, 187, 177, 0.9);*/
@@ -63,7 +64,7 @@
 
 .container .btn {
 	  background-color:rgb(119, 187, 177);
-	  border: none;
+	  border-radius: 50em !important;
 	  color: white;
 	  padding: 12px 30px;
 	  cursor: pointer;
@@ -74,6 +75,12 @@
 	  margin-right: 41.5%;
 	}
 
+/* responsive buttons: https://codepen.io/dlekovic/pen/eDlkC*/
+.container .btn:hover, .btn:focus {
+    opacity: 0.8;
+}
+
+/*HELP*/
 .column {
   float: left;
   width: 33.33%;
@@ -88,4 +95,3 @@
   display: table;
   clear: both;
 }
-/*FOOTER*/
