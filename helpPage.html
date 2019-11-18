@@ -31,83 +31,191 @@
 
 <body>
 
-<!-- NAVBAR -->
-<!-- expands on small; dark theme; stays on top -->
-<!-- bg-dark navbar-dark -->
-<nav class="navbar navbar-expand-sm  fixed-top">
-	<a class="navbar-brand" href="#">Grocery Helper</a>
+	<!-- NAVBAR -->
+	<!-- expands on small; dark theme; stays on top -->
+	<!-- bg-dark navbar-dark -->
+	<nav class="navbar navbar-expand-sm  fixed-top">
+		<a class="navbar-brand" href="#">Grocery Helper</a>
 
-	  <!-- Toggler/collapsibe Button -->
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-	    	<span class="navbar-toggler-icon"></span>
-	  </button>
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-	  <!-- links to collapse; justify-content-end aligns to right -->
-	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-		<ul class="navbar-nav stroke">
-			<li class="navbar-item">
-				<a href = "index.html" class="nav-link" href="#about">Home</a>
-			</li>
-			<li class="navbar-item">
-				<a class="nav-link" href="#resume">Login</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#work">My Lists</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link"href="#media">Favorites</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#contact">Inventory</a>
-			</li>
-		</ul>
-	</div>
-</nav>
-
-
-<div class="container-fluid">
-	<img src="logo.png" class="centerSmall">
-
-	<div class="containerSmall">
-		<h3>Welcome to Grocery Helper.</h3>
-		<p>Making lists with Grocery Helper is easy!</p>
-    <p>Press on any help button to learn more about that feature.</p>
-	</div>
-
-  <div class="row">
-    <div class="column" style="background-color:rgb(211, 236, 232);">
-      <h2><center>Your List </center></h2>
-      <p>Enter items</p>
-    </div>
-
-    <!-- <a href="#" data-toggle="popover" title="Making your lists"
-    data-content="This is where you can add items to your list. ">
-    Help me make a list!</a> -->
-    <!-- <script>
-    $(document).ready(function(){
-      $('[data-toggle="popover"]').popover();
-    });
-    </script> -->
-
-    <div class="column" style="background-color:rgb(188, 237, 228);">
-      <h2><center>Inventory</center></h2>
-      <p>Items you already have.</p>
-    </div>
+		<!-- links to collapse; justify-content-end aligns to right -->
+		<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+			<ul class="navbar-nav stroke">
+				<li class="navbar-item">
+					<a href = "index.html" class="nav-link" href="#about">Home</a>
+				</li>
+				<li class="navbar-item">
+					<a class="nav-link" href="#resume">Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#work">My Lists</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link"href="#media">Favorites</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#contact">Inventory</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
 
-    <div class="column" style="background-color:rgb(157, 236, 222);">
-      <h2><center>Favorites<center></h2>
-      <p>Your favorte items</p>
-    </div>
+	<div class="container-fluid">
+		<img src="logo.png" class="centerSmall">
 
-  </div>
+		<div class="containerSmall">
+			<h3>Welcome to Grocery Helper.</h3>
+			<p>Making lists with Grocery Helper is easy!</p>
+			<p>Press on any help button to learn more about that feature.</p>
+		</div>
 
-</div>
+		<div class="row">
+			<!-- grocery list -->
+			<div class="column" style="background-color:rgb(211, 236, 232)">
+				<h2><center>Your List<br>
+					<a href="#" data-toggle="popover" title="Making your lists" trigger = "hover, click"
+					data-content="This is where you can add items to your list! \n
+					Enter the items you want to add to your grocery list. \n
+					When you purchase your iten, you can check it off your list and it will be saved in your inventory. \n
+					Decide to not buy something? Cross it off your list!">
+					<button type="button" class="btn btn-info">Help me make a list!</button></a>
+				</center></h2>
+				<p>
 
-<!-- <div class="middle"></div> -->
+					<div id="myDIV" class="header">
+						<input type="text" id="myInput" placeholder="Enter item...">
+						<span onclick="newElement()" class="addBtn">Add Item</span>
+					</div>
+
+					<ul id="listUL" >
+						<li>eggs</li>
+						<li class="checked"> bread</li>
+						<li>apples</li>
+					</ul>
+
+					<script>
+					// Create a "close" button and append it to each list item
+					var myNodelist = [document.getElementById("listUL")]; // document.getElementsByTagName("LI");
+					console.log(myNodelist);
+					var i;
+					for (i = 0; i < myNodelist.length; i++) {
+						var span = document.createElement("SPAN");
+						var txt = document.createTextNode("\u00D7");
+						span.className = "close";
+						span.appendChild(txt);
+						myNodelist[i].appendChild(span);
+					}
+					console.log(myNodelist);
+
+					// Click on a close button to hide the current list item
+					var close = document.getElementsByClassName("close");
+					var i;
+					for (i = 0; i < close.length; i++) {
+						close[i].onclick = function() {
+							var div = this.parentElement;
+							div.style.display = "none";
+						}
+					}
+
+					// Add a "checked" symbol when clicking on a list item
+					var list = document.querySelector("#listUL");
+					list.addEventListener('click', function(ev) {
+						if (ev.target.tagName === 'LI') {
+							ev.target.classList.toggle('checked');
+						}
+					}, false);
+
+					// Create a new list item when clicking on the "Add" button
+					function newElement() {
+						var li = document.createElement("li");
+						var inputValue = document.getElementById("myInput").value;
+						var t = document.createTextNode(inputValue);
+						li.appendChild(t);
+						if (inputValue === '') {
+							alert("You must write something!");
+						} else {
+							document.getElementById("listUL").appendChild(li);
+						}
+						document.getElementById("myInput").value = "";
+
+						var span = document.createElement("SPAN");
+						var txt = document.createTextNode("\u00D7");
+						span.className = "close";
+						span.appendChild(txt);
+						li.appendChild(span);
+
+						for (i = 0; i < close.length; i++) {
+							close[i].onclick = function() {
+								var div = this.parentElement;
+								div.style.display = "none";
+							}
+						}
+					}
+					</script>
+
+				</p>
+			</div>
+			<!-- inventory -->
+			<div class="column" style="background-color:rgb(188, 237, 228);">
+				<h2><center>Inventory<br>
+					<a href="#" data-toggle="popover" title="Your Inventory"
+					data-content="This is where you can view items that you currently have. ">
+					<button type="button" class="btn btn-info">What's in my inventory?</button></a></center></h2>
+					<p>Items you already have.</p>
+
+					<table style="width:100%">
+						<tr>
+							<th>Item</th>
+							<th>Days until expiration</th>
+						</tr>
+						<tr>
+							<td>bananas</td>
+							<td>3 days</td>
+						</tr>
+						<tr>
+							<td>cheddar cheese</td>
+							<td>21 days</td>
+						</tr>
+					</table>
+
+			</div>
+
+			<!-- favorites -->
+			<div class="column" style="background-color:rgb(157, 236, 222);">
+				<h2><center>Favorites<center>
+					<a href="#" data-toggle="popover" title="Your Favorites"
+					data-content="These items will always be added to your grcoery list.
+					You can add items to your by starring them.">
+					<button type="button" class="btn btn-info">What are you favorites?</button></a></center></h2>
+					<p>Your favorte items</p>
+
+					<ul id="favoritesUL" >
+						<li>eggs</li>
+						<li class="checked">bread</li>
+						<li>apples</li>
+					</ul>
+
+				</div>
+
+				<script>
+				$(document).ready(function(){
+					$('[data-toggle="popover"]').popover();
+				});
+				</script>
+
+			</div>
+
+		</div>
+
+			<!-- <div class="middle"></div> -->
 
 
-<!-- FOOTER OR CONTACT-->
+			<!-- FOOTER OR CONTACT-->
 
 </body>
 </html>
