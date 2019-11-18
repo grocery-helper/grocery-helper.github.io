@@ -211,6 +211,14 @@ input {
   background-color: #bbb;
 }
 
+
+/******************/
+/* INVENTORY LIST */
+/******************/
+#inventoryList {
+	width: 100%;
+}
+
 /******************/
 /* FAVORITES LIST */
 /******************/

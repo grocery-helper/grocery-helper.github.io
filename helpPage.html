@@ -78,12 +78,13 @@
 			<!-- grocery list -->
 			<div class="column" style="background-color:rgb(211, 236, 232)">
 				<h2><center>Your List<br>
-					<a href="#" data-toggle="popover" title="Making your lists" trigger = "hover, click"
+					<a href="#" data-toggle="popover" title="Making your lists"
 					data-content="This is where you can add items to your list! \n
 					Enter the items you want to add to your grocery list. \n
 					When you purchase your iten, you can check it off your list and it will be saved in your inventory. \n
 					Decide to not buy something? Cross it off your list!">
 					<button type="button" class="btn btn-info">Help me make a list!</button></a>
+
 				</center></h2>
 				<p>
 
@@ -124,11 +125,24 @@
 
 					// Add a "checked" symbol when clicking on a list item
 					var list = document.querySelector("#listUL");
+
 					list.addEventListener('click', function(ev) {
 						if (ev.target.tagName === 'LI') {
 							ev.target.classList.toggle('checked');
 						}
+						// Add to inventory table
+						var table = document.getElementById("inventoryList");
+						var row = table.insertRow(1);
+						var newItem = row.insertCell(0);
+					  var expDate = row.insertCell(1);
+						var addStar = row.insertCell(2);
+						var addTrash = row.insertCell(3);
+					  newItem.innerHTML = "new item";
+					  expDate.innerHTML = "days left";
+						addStar.innerHTML = "<input type=\"checkbox\">&nbsp"
+						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
 					}, false);
+
 
 					// Create a new list item when clicking on the "Add" button
 					function newElement() {
@@ -168,20 +182,46 @@
 					<button type="button" class="btn btn-info">What's in my inventory?</button></a></center></h2>
 					<p>Items you already have.</p>
 
-					<table style="width:100%">
+					<table id="inventoryList">
 						<tr>
 							<th>Item</th>
 							<th>Days until expiration</th>
+							<th>⭐</th>
+							<th>🗑️</th>
 						</tr>
 						<tr>
 							<td>bananas</td>
 							<td>3 days</td>
+							<td><input type="checkbox" onclick="addToFav(this)"/></td>
+							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
 						<tr>
 							<td>cheddar cheese</td>
 							<td>21 days</td>
+							<td><input type="checkbox" onclick="addToFav()"/></td>
+							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
 					</table>
+
+					<script>
+					function deleteRow(btn) {
+					  var row = btn.parentNode.parentNode;
+					  row.parentNode.removeChild(row);
+					}
+
+					function addToFav(){// Add to favorites table
+						var ul = document.getElementById("favoritesUL");
+						var li = document.createElement("li");
+						li.appendChild(document.createTextNode("New favorite item!"));
+						ul.appendChild(li);
+
+						//also add to grocery list
+						var ul = document.getElementById("listUL");
+						var li = document.createElement("li");
+						li.appendChild(document.createTextNode("New favorite item!"));
+						ul.appendChild(li);
+					}
+					</script>
 
 			</div>
 
