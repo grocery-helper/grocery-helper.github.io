@@ -1,3 +1,4 @@
+/*NAVBAR*/
 	.navbar{
 		/*background-color: white;*/
 		background-color: rgb(119, 187, 177);
@@ -43,7 +44,7 @@
 		width: 100%;
 	}
 
-/*MIDDLE*/
+/*CONTAINER (index.html)*/
 .container-fluid{
 	height: 734px;
 	/*background-color: rgb(119, 187, 177, 0.9);*/
@@ -75,7 +76,7 @@
 
 .container .btn {
 	  background-color:rgb(119, 187, 177);
-	  border: none;
+	  border-radius: 50em !important;
 	  color: white;
 	  padding: 12px 30px;
 	  cursor: pointer;
@@ -92,13 +93,35 @@
   width: 33.33%;
   padding: 10px;
   height: 800px; /* Should be removed. Only for demonstration */
+
+/* responsive buttons: https://codepen.io/dlekovic/pen/eDlkC*/
+.container .btn:hover, .btn:focus {
+    opacity: 0.8;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.break{
+	height: 60px;
+	background-color: white;	
+}
+/*CONTAINER (viewLists.html)*/
+
+.row{
+	height: 670px;
+}
+.list{
+	 border-style: solid;
+	 border-radius: 10px;
+	 border-color: rgb(119, 187, 177, 0.8);
+}
+.inv{
+	border-style: solid;
+	border-radius: 10px;
+	border-color: rgb(119, 187, 177, 0.8);
+}
+.fav{
+	border-style: solid;
+	border-radius: 10px;
+	border-color: rgb(119, 187, 177, 0.8);
 }
 
 /* *************** */
@@ -227,3 +250,4 @@ content: '⭐';
 margin-left: -25px;
 margin-right: 10px;
 }
+=======
