@@ -44,24 +44,21 @@
 
 		<!-- links to collapse; justify-content-end aligns to right -->
 		<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-			<ul class="navbar-nav stroke">
-				<li class="navbar-item">
-					<a href = "index.html" class="nav-link" href="#about">Home</a>
-				</li>
-				<li class="navbar-item">
-					<a class="nav-link" href="#resume">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#work">My Lists</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link"href="#media">Favorites</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#contact">Inventory</a>
-				</li>
-			</ul>
-		</div>
+		<ul class="navbar-nav stroke">
+			<li class="navbar-item">
+				<a class="nav-link" href="#">Home</a>
+			</li>
+			<li class="navbar-item">
+				<a class="nav-link" href="helpPage.html">Help</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="viewLists.html">My Lists</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"href="#">Login</a>
+			</li>
+		</ul>
+	</div>
 	</nav>
 
 
@@ -231,14 +228,25 @@
 					<a href="#" data-toggle="popover" title="Your Favorites"
 					data-content="These items will always be added to your grcoery list.
 					You can add items to your by starring them.">
-					<button type="button" class="btn btn-info">What are you favorites?</button></a></center></h2>
+					<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
 					<p>Your favorte items</p>
 
-					<ul id="favoritesUL" >
+					<!-- <ul id="favoritesUL" >
 						<li>eggs</li>
 						<li class="checked">bread</li>
 						<li>apples</li>
-					</ul>
+					</ul> -->
+
+					<table id="inventoryList">
+						<tr>
+							<td>eggs</td>
+							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
+						</tr>
+						<td>apples</td>
+
+
+
+
 
 				</div>
 
