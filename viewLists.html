@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Grocery Helper</title>
+	<title>View Lists</title>
 
 	<!-- SEO -->
 	<meta charset="utf-8" http-equiv="content-type" content="text/html">
@@ -26,7 +26,7 @@
 
 
 	<!-- FONT AWESOME -->
-	<script src="https://kit.fontawesome.com/504d9a3113.js"></script>
+	<!-- <script src="https://kit.fontawesome.com/504d9a3113.js"></script> -->
 </head>
 
 <body>
@@ -46,13 +46,13 @@
 	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 		<ul class="navbar-nav stroke">
 			<li class="navbar-item">
-				<a class="nav-link" href="#">Home</a>
+				<a class="nav-link" href="index.html">Home</a>
 			</li>
 			<li class="navbar-item">
 				<a class="nav-link" href="helpPage.html">Help</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="viewLists.html">My Lists</a>
+				<a class="nav-link" href="#">My Lists</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link"href="login.html">Login</a>
@@ -61,25 +61,24 @@
 	</div>
 </nav>
 
+<div class="break"></div>
 
-<!-- CONTAINER: Description + Button -->
-<div class="container-fluid">
-	<img src="logo.png" class="center">
-
-	<div class="container">
-		<h1>Build smart Grocery Lists.</h1>
-		<p>Grocery Helper analyzes your past shopping behavior. We keep track so, you don't have to!</p>
-		<p>For instance, we remind you of when items are about to expire.</p>
-		<p>No other grocery app does that!</p>
-		<button class="btn" href="helpPage.html">Get Started</button>
-	</div>
+<!-- COLUMNS -->
+<div class="container lists">
+  <div class="row">
+    <div class="list col-md-6">
+      <h2>My Lists</h2>
+    </div>
+    <div class="inv col-md-3">
+      <h2>Inventory</h2>
+    </div>
+    <div class="fav col-md-3">
+      <h2>Favorites</h2>
+    </div>
+</div>
 </div>
 
-
-<!-- FOOTER -->
-<footer class="page-footer">
-	<a href="https://github.com/grocery-helper/grocery-helper.github.io"><i align="right" class="fab fa-github github" aria-hidden="true"></i></a>
-</footer>
+<!-- CHANGE WILLOW'S NAVBAR -->
 
 </body>
 </html>
