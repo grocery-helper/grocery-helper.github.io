@@ -46,7 +46,7 @@
 		<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 		<ul class="navbar-nav stroke">
 			<li class="navbar-item">
-				<a class="nav-link" href="#">Home</a>
+				<a class="nav-link" href="index.html">Home</a>
 			</li>
 			<li class="navbar-item">
 				<a class="nav-link" href="helpPage.html">Help</a>
@@ -55,7 +55,7 @@
 				<a class="nav-link" href="viewLists.html">My Lists</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link"href="#">Login</a>
+				<a class="nav-link"href="login.html">Login</a>
 			</li>
 		</ul>
 	</div>
@@ -76,9 +76,9 @@
 			<div class="column" style="background-color:rgb(211, 236, 232)">
 				<h2><center>Your List<br>
 					<a href="#" data-toggle="popover" title="Making your lists"
-					data-content="This is where you can add items to your list! \n
-					Enter the items you want to add to your grocery list. \n
-					When you purchase your iten, you can check it off your list and it will be saved in your inventory. \n
+					data-content="This is where you can add items to your list! <br>
+					Enter the items you want to add to your grocery list. <br>
+					When you purchase your iten, you can check it off your list and it will be saved in your inventory. <br>
 					Decide to not buy something? Cross it off your list!">
 					<button type="button" class="btn btn-info">Help me make a list!</button></a>
 
@@ -189,13 +189,13 @@
 						<tr>
 							<td>bananas</td>
 							<td>3 days</td>
-							<td><input type="checkbox" onclick="addToFav(this)"/></td>
+							<td><input type="checkbox" class = "use-address"></td>
 							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
 						<tr>
 							<td>cheddar cheese</td>
 							<td>21 days</td>
-							<td><input type="checkbox" onclick="addToFav()"/></td>
+							<td><input type="checkbox" class = "use-address"></td>
 							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
 					</table>
@@ -206,16 +206,25 @@
 					  row.parentNode.removeChild(row);
 					}
 
-					function addToFav(){// Add to favorites table
-						var ul = document.getElementById("favoritesUL");
-						var li = document.createElement("li");
-						li.appendChild(document.createTextNode("New favorite item!"));
-						ul.appendChild(li);
+					$('.use-address').click(function () {
+							var id = $(this).closest("tr").find('td:eq(0)').text();
+							addToFav(id);
+						});
 
+					function addToFav(id){
+						// Add to favorites table
+						var table = document.getElementById("favoritesList");
+						var row = table.insertRow(1);
+						var starBullet = row.insertCell(0);
+					  var itemName = row.insertCell(1);
+						var addTrash = row.insertCell(2);
+					  starBullet.innerHTML = "⭐";
+					  itemName.innerHTML = id;
+						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
 						//also add to grocery list
 						var ul = document.getElementById("listUL");
 						var li = document.createElement("li");
-						li.appendChild(document.createTextNode("New favorite item!"));
+						li.appendChild(document.createTextNode(String(id)));
 						ul.appendChild(li);
 					}
 					</script>
@@ -231,22 +240,32 @@
 					<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
 					<p>Your favorte items</p>
 
-					<!-- <ul id="favoritesUL" >
-						<li>eggs</li>
-						<li class="checked">bread</li>
-						<li>apples</li>
-					</ul> -->
-
-					<table id="inventoryList">
+					<table id="favoritesList">
+						<col width="5">
+						<col width="200" style="text-align:left">
+						<col width="30" style="text-align:right">
 						<tr>
+							<th></th>
+							<th></th>
+							<th>🗑️</th>
+						</tr>
+						<tr>
+							<td>⭐</td>
 							<td>eggs</td>
 							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
-						<td>apples</td>
+							<tr>
+								<td>⭐</td>
+							<td>apples</td>
+							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
+						</tr>
 
-
-
-
+						<script>
+						function deleteRow(btn) {
+						  var row = btn.parentNode.parentNode;
+						  row.parentNode.removeChild(row);
+						}
+						</script>
 
 				</div>
 
