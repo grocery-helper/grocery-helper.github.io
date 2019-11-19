@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="helpPageStyle.css">
 
 	<!-- JQuery -->
 	<script type="text/javascript" src='main.js'></script>
@@ -44,21 +44,22 @@
 
 		<!-- links to collapse; justify-content-end aligns to right -->
 		<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-			<ul class="navbar-nav stroke">
+
+		<ul class="navbar-nav stroke">
 			<li class="navbar-item">
-				<a class="nav-link" href="index.html">Home</a>
+				<a class="nav-link" href="#">Home</a>
 			</li>
 			<li class="navbar-item">
-				<a class="nav-link" href="#">Help</a>
+				<a class="nav-link" href="helpPage.html">Help</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="viewLists.html">My Lists</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link"href="login.html">Login</a>
+				<a class="nav-link"href="#">Login</a>
 			</li>
-			</ul>
-		</div>
+		</ul>
+	</div>
 	</nav>
 
 
@@ -228,14 +229,25 @@
 					<a href="#" data-toggle="popover" title="Your Favorites"
 					data-content="These items will always be added to your grcoery list.
 					You can add items to your by starring them.">
-					<button type="button" class="btn btn-info">What are you favorites?</button></a></center></h2>
+					<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
 					<p>Your favorte items</p>
 
-					<ul id="favoritesUL" >
+					<!-- <ul id="favoritesUL" >
 						<li>eggs</li>
 						<li class="checked">bread</li>
 						<li>apples</li>
-					</ul>
+					</ul> -->
+
+					<table id="inventoryList">
+						<tr>
+							<td>eggs</td>
+							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
+						</tr>
+						<td>apples</td>
+
+
+
+
 
 				</div>
 
