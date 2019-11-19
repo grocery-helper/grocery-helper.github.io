@@ -223,8 +223,6 @@ width: 100%;
 /******************/
 /* FAVORITES LIST */
 /******************/
-#favoritesUL li:before {
-content: '⭐';
-margin-left: -25px;
-margin-right: 10px;
+#favoritesList {
+width: 100%;
 }
