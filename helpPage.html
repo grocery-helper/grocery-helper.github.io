@@ -77,9 +77,9 @@
 			<div class="column" style="background-color:rgb(211, 236, 232)">
 				<h2><center>Your List<br>
 					<a href="#" data-toggle="popover" title="Making your lists"
-					data-content="This is where you can add items to your list! <br>
-					Enter the items you want to add to your grocery list. <br>
-					When you purchase your iten, you can check it off your list and it will be saved in your inventory. <br>
+					data-content="This is where you can add items to your list!
+					Enter the items you want to add to your grocery list.
+					When you purchase your iten, you can check it off your list and it will be saved in your inventory.
 					Decide to not buy something? Cross it off your list!">
 					<button type="button" class="btn btn-info">Help me make a list!</button></a>
 
@@ -100,7 +100,6 @@
 					<script>
 					// Create a "close" button and append it to each list item
 					var myNodelist = [document.getElementById("listUL")]; // document.getElementsByTagName("LI");
-					console.log(myNodelist);
 					var i;
 					for (i = 0; i < myNodelist.length; i++) {
 						var span = document.createElement("SPAN");
@@ -109,7 +108,6 @@
 						span.appendChild(txt);
 						myNodelist[i].appendChild(span);
 					}
-					console.log(myNodelist);
 
 					// Click on a close button to hide the current list item
 					var close = document.getElementsByClassName("close");
@@ -124,6 +122,7 @@
 					// Add a "checked" symbol when clicking on a list item
 					var list = document.querySelector("#listUL");
 
+
 					list.addEventListener('click', function(ev) {
 						if (ev.target.tagName === 'LI') {
 							ev.target.classList.toggle('checked');
@@ -135,8 +134,8 @@
 					  var expDate = row.insertCell(1);
 						var addStar = row.insertCell(2);
 						var addTrash = row.insertCell(3);
-					  newItem.innerHTML = "new item";
-					  expDate.innerHTML = "days left";
+					  newItem.innerHTML = ev.target.innerHTML;
+					  expDate.innerHTML = "  days left";
 						addStar.innerHTML = "<input type=\"checkbox\">&nbsp"
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
 					}, false);
@@ -176,7 +175,9 @@
 			<div class="column" style="background-color:rgb(188, 237, 228);">
 				<h2><center>Inventory<br>
 					<a href="#" data-toggle="popover" title="Your Inventory"
-					data-content="This is where you can view items that you currently have. ">
+					data-content="This is where you can view items that you currently have.
+												Staring items (⭐) adds them to your favorites list.
+												When you run out of an item, remove it from your list (🗑️).">
 					<button type="button" class="btn btn-info">What's in my inventory?</button></a></center></h2>
 					<p>Items you already have.</p>
 
@@ -237,7 +238,7 @@
 				<h2><center>Favorites<center>
 					<a href="#" data-toggle="popover" title="Your Favorites"
 					data-content="These items will always be added to your grcoery list.
-					You can add items to your by starring them.">
+					You can add items to your by starring them and remove them at any time.">
 					<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
 					<p>Your favorte items</p>
 
