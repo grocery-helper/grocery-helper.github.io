@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Grocery Helper</title>
+	<title>View Lists</title>
 
 	<!-- SEO -->
 	<meta charset="utf-8" http-equiv="content-type" content="text/html">
@@ -30,20 +30,19 @@
 
 <body>
 
-	<!-- NAVBAR -->
-	<!-- expands on small; dark theme; stays on top -->
-	<!-- bg-dark navbar-dark -->
-	<nav class="navbar navbar-expand-sm  fixed-top">
-		<a class="navbar-brand" href="#">Grocery Helper</a>
+<!-- NAVBAR -->
+<!-- expands on small; dark theme; stays on top -->
+<!-- bg-dark navbar-dark -->
+<nav class="navbar navbar-expand-sm  fixed-top">
+	<a class="navbar-brand" href="#">Grocery Helper</a>
 
-		<!-- Toggler/collapsibe Button -->
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+	  <!-- Toggler/collapsibe Button -->
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    	<span class="navbar-toggler-icon"></span>
+	  </button>
 
-		<!-- links to collapse; justify-content-end aligns to right -->
-		<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-
+	  <!-- links to collapse; justify-content-end aligns to right -->
+	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 		<ul class="navbar-nav stroke">
 			<li class="navbar-item">
 				<a class="nav-link" href="index.html">Home</a>
@@ -52,25 +51,31 @@
 				<a class="nav-link" href="helpPage.html">Help</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="viewLists.html">My Lists</a>
+				<a class="nav-link" href="#">My Lists</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link"href="login.html">Login</a>
 			</li>
 		</ul>
 	</div>
-	</nav>
+</nav>
 
+<div class="break"></div>
+
+<!-- COLUMNS -->
 	<div class="container-fluid">
 		<img src="logo.png" class="centerSmall">
 
 		<div class="containerSmall">
-		</div>
-
+			<h3>Welcome to Grocery Helper.</h3>
+			<p>Welcome to your lists!</p>
+			
+	</div>
 		<div class="row">
 			<!-- grocery list -->
 			<div class="column" style="background-color:rgb(211, 236, 232)">
-				<h2><center>Your List</center></h2>
+				<h2><center>Your List<br>
+				</center></h2>
 				<p>
 
 					<div id="myDIV" class="header">
@@ -79,15 +84,15 @@
 					</div>
 
 					<ul id="listUL" >
-
-						<li>eggs <span class="quantity"><input id="numberOfItem" type="number" value="1"> </span> <span class="close">×</span></li>
-						<li class="checked">bread<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>
-						<li>apples<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>
+						<!-- <li>eggs</li>
+						<li class="checked"> bread</li>
+						<li>apples</li> -->
 					</ul>
 
 					<script>
 					// Create a "close" button and append it to each list item
 					var myNodelist = [document.getElementById("listUL")]; // document.getElementsByTagName("LI");
+					console.log(myNodelist);
 					var i;
 					for (i = 0; i < myNodelist.length; i++) {
 						var span = document.createElement("SPAN");
@@ -96,6 +101,7 @@
 						span.appendChild(txt);
 						myNodelist[i].appendChild(span);
 					}
+					console.log(myNodelist);
 
 					// Click on a close button to hide the current list item
 					var close = document.getElementsByClassName("close");
@@ -109,6 +115,7 @@
 
 					// Add a "checked" symbol when clicking on a list item
 					var list = document.querySelector("#listUL");
+
 					list.addEventListener('click', function(ev) {
 						if (ev.target.tagName === 'LI') {
 							ev.target.classList.toggle('checked');
@@ -120,20 +127,8 @@
 					  var expDate = row.insertCell(1);
 						var addStar = row.insertCell(2);
 						var addTrash = row.insertCell(3);
-
-					  //newItem.innerHTML = ev.target.innerHTML;
-
-						//THIS SECTION CAUSES LAG!!!!
-						// var getItem = ev.target.innerHTML.toString();
-						// var i = 0;
-						// var addItem ="";
-						// while (getItem[i] != '<') {
-						// 	addItem = addItem.concat(getItem[i]);
-						// 	i++;
-						// }
-
-						//newItem.innerHTML = addItem;
-					  expDate.innerHTML = "  days left";
+					  newItem.innerHTML = "new item";
+					  expDate.innerHTML = "days left";
 						addStar.innerHTML = "<input type=\"checkbox\">&nbsp"
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
 					}, false);
@@ -144,25 +139,19 @@
 						var li = document.createElement("li");
 						var inputValue = document.getElementById("myInput").value;
 						var t = document.createTextNode(inputValue);
-
-						//console.log(t);
-						//li.appendChild(t);
-						// $("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
+						li.appendChild(t);
 						if (inputValue === '') {
 							alert("You must write something!");
 						} else {
-							//document.getElementById("listUL").appendChild(li);
-							$("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
+							document.getElementById("listUL").appendChild(li);
 						}
 						document.getElementById("myInput").value = "";
 
-						// var span = document.createElement("SPAN");
-						// var txt = document.createTextNode("\u00D7");
-						// span.className = "close";
-						// span.appendChild(txt);
-						// li.appendChild(span);
-
-						console.log(li);
+						var span = document.createElement("SPAN");
+						var txt = document.createTextNode("\u00D7");
+						span.className = "close";
+						span.appendChild(txt);
+						li.appendChild(span);
 
 						for (i = 0; i < close.length; i++) {
 							close[i].onclick = function() {
@@ -177,29 +166,29 @@
 			</div>
 			<!-- inventory -->
 			<div class="column" style="background-color:rgb(188, 237, 228);">
-
-				<h2><center>Inventory</center></h2>
+				<h2><center>Inventory<br>
+					<p>Items you already have.</p>
 
 					<table id="inventoryList">
 						<tr>
 							<th>Item</th>
-
-							<th>Days until expiration</th>
+							<th>Expiration Date</th>
+							<th>Quantity</th>
 							<th>⭐</th>
 							<th>🗑️</th>
 						</tr>
 						<tr>
 							<td>bananas</td>
 							<td>3 days</td>
-
-							<td><input type="checkbox" class = "use-address"></td>
+							<td>3</td>
+							<td><input type="checkbox" onclick="addToFav(this)"/></td>
 							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
 						<tr>
 							<td>cheddar cheese</td>
 							<td>21 days</td>
-
-							<td><input type="checkbox" class = "use-address"></td>
+							<td>3</td>
+							<td><input type="checkbox" onclick="addToFav()"/></td>
 							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
 					</table>
@@ -209,6 +198,12 @@
 					  var row = btn.parentNode.parentNode;
 					  row.parentNode.removeChild(row);
 					}
+
+					function addToFav(){// Add to favorites table
+						var ul = document.getElementById("favoritesUL");
+						var li = document.createElement("li");
+						li.appendChild(document.createTextNode("New favorite item!"));
+						ul.appendChild(li);
 
 
 					$('.use-address').click(function () {
@@ -227,11 +222,12 @@
 					  starBullet.innerHTML = "⭐";
 					  itemName.innerHTML = id;
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
+
 						//also add to grocery list
 						var ul = document.getElementById("listUL");
 						var li = document.createElement("li");
-						$("#listUL").append('<li>'+String(id)+'<span class="quantity"><span class="close">×</span><input id="numberOfItem" type="number" value="1"></li>');
-
+						li.appendChild(document.createTextNode("New favorite item!"));
+						ul.appendChild(li);
 					}
 					</script>
 
@@ -239,52 +235,31 @@
 
 			<!-- favorites -->
 			<div class="column" style="background-color:rgb(157, 236, 222);">
+				<h2><center>Favorites<center>
+					<p>Your favorte items</p>
 
-				<h2><center>Favorites</center></h2>
+					<!-- <ul id="favoritesUL" >
+						<li>eggs</li>
+						<li class="checked">bread</li>
+						<li>apples</li>
+					</ul> -->
 
-					<table id="favoritesList">
-						<col width="5">
-						<col width="200" style="text-align:left">
-						<col width="30" style="text-align:right">
+					<table id="inventoryList">
 						<tr>
-							<th></th>
-							<th></th>
-							<th>🗑️</th>
-						</tr>
-						<tr>
-							<td>⭐</td>
 							<td>eggs</td>
 							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
-							<tr>
-								<td>⭐</td>
-							<td>apples</td>
-							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
-						</tr>
+						<td>apples</td>
 
-						<script>
-						function deleteRow(btn) {
-						  var row = btn.parentNode.parentNode;
-						  row.parentNode.removeChild(row);
-						}
-						</script>
+
+
+
 
 				</div>
+</div>
+</div>
 
-				<script>
-				$(document).ready(function(){
-					$('[data-toggle="popover"]').popover();
-				});
-				</script>
-
-			</div>
-
-		</div>
-
-			<!-- <div class="middle"></div> -->
-
-
-			<!-- FOOTER OR CONTACT-->
+<!-- CHANGE WILLOW'S NAVBAR -->
 
 </body>
 </html>

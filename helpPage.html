@@ -76,9 +76,9 @@
 			<div class="column" style="background-color:rgb(211, 236, 232)">
 				<h2><center>Your List<br>
 					<a href="#" data-toggle="popover" title="Making your lists"
-					data-content="This is where you can add items to your list!
-					Enter the items you want to add to your grocery list.
-					When you purchase your iten, you can check it off your list and it will be saved in your inventory.
+					data-content="This is where you can add items to your list! <br>
+					Enter the items you want to add to your grocery list. <br>
+					When you purchase your iten, you can check it off your list and it will be saved in your inventory. <br>
 					Decide to not buy something? Cross it off your list!">
 					<button type="button" class="btn btn-info">Help me make a list!</button></a>
 
@@ -91,14 +91,15 @@
 					</div>
 
 					<ul id="listUL" >
-						<li>eggs <span class="quantity"><input id="numberOfItem" type="number" value="1"> </span> <span class="close">×</span></li>
-						<li class="checked">bread<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>
-						<li>apples<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>
+						<li>eggs</li>
+						<li class="checked"> bread</li>
+						<li>apples</li>
 					</ul>
 
 					<script>
 					// Create a "close" button and append it to each list item
 					var myNodelist = [document.getElementById("listUL")]; // document.getElementsByTagName("LI");
+					console.log(myNodelist);
 					var i;
 					for (i = 0; i < myNodelist.length; i++) {
 						var span = document.createElement("SPAN");
@@ -107,6 +108,7 @@
 						span.appendChild(txt);
 						myNodelist[i].appendChild(span);
 					}
+					console.log(myNodelist);
 
 					// Click on a close button to hide the current list item
 					var close = document.getElementsByClassName("close");
@@ -120,6 +122,7 @@
 
 					// Add a "checked" symbol when clicking on a list item
 					var list = document.querySelector("#listUL");
+
 					list.addEventListener('click', function(ev) {
 						if (ev.target.tagName === 'LI') {
 							ev.target.classList.toggle('checked');
@@ -131,18 +134,8 @@
 					  var expDate = row.insertCell(1);
 						var addStar = row.insertCell(2);
 						var addTrash = row.insertCell(3);
-					  //newItem.innerHTML = ev.target.innerHTML;
-
-						//THIS SECTION CAUSES LAG!!!!
-						// var getItem = ev.target.innerHTML.toString();
-						// var i = 0;
-						// var addItem ="";
-						// while (getItem[i] != '<') {
-						// 	addItem = addItem.concat(getItem[i]);
-						// 	i++;
-						// }
-						//newItem.innerHTML = addItem;
-					  expDate.innerHTML = "  days left";
+					  newItem.innerHTML = "new item";
+					  expDate.innerHTML = "days left";
 						addStar.innerHTML = "<input type=\"checkbox\">&nbsp"
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
 					}, false);
@@ -153,24 +146,19 @@
 						var li = document.createElement("li");
 						var inputValue = document.getElementById("myInput").value;
 						var t = document.createTextNode(inputValue);
-						//console.log(t);
-						//li.appendChild(t);
-						// $("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
+						li.appendChild(t);
 						if (inputValue === '') {
 							alert("You must write something!");
 						} else {
-							//document.getElementById("listUL").appendChild(li);
-							$("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
+							document.getElementById("listUL").appendChild(li);
 						}
 						document.getElementById("myInput").value = "";
 
-						// var span = document.createElement("SPAN");
-						// var txt = document.createTextNode("\u00D7");
-						// span.className = "close";
-						// span.appendChild(txt);
-						// li.appendChild(span);
-
-						console.log(li);
+						var span = document.createElement("SPAN");
+						var txt = document.createTextNode("\u00D7");
+						span.className = "close";
+						span.appendChild(txt);
+						li.appendChild(span);
 
 						for (i = 0; i < close.length; i++) {
 							close[i].onclick = function() {
@@ -187,9 +175,7 @@
 			<div class="column" style="background-color:rgb(188, 237, 228);">
 				<h2><center>Inventory<br>
 					<a href="#" data-toggle="popover" title="Your Inventory"
-					data-content="This is where you can view items that you currently have.
-												Staring items (⭐) adds them to your favorites list.
-												When you run out of an item, remove it from your list (🗑️).">
+					data-content="This is where you can view items that you currently have. ">
 					<button type="button" class="btn btn-info">What's in my inventory?</button></a></center></h2>
 					<p>Items you already have.</p>
 
@@ -238,8 +224,8 @@
 						//also add to grocery list
 						var ul = document.getElementById("listUL");
 						var li = document.createElement("li");
-						$("#listUL").append('<li>'+String(id)+'<span class="quantity"><span class="close">×</span><input id="numberOfItem" type="number" value="1"></li>');
-
+						li.appendChild(document.createTextNode(String(id)));
+						ul.appendChild(li);
 					}
 					</script>
 
@@ -250,7 +236,7 @@
 				<h2><center>Favorites<center>
 					<a href="#" data-toggle="popover" title="Your Favorites"
 					data-content="These items will always be added to your grcoery list.
-					You can add items to your by starring them and remove them at any time.">
+					You can add items to your by starring them.">
 					<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
 					<p>Your favorte items</p>
 
