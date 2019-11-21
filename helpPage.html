@@ -134,7 +134,7 @@
 						var addTrash = row.insertCell(3);
 					  //newItem.innerHTML = ev.target.innerHTML;
 
-						// //THIS SECTION CAUSES LAG!!!!
+						//THIS SECTION CAUSES LAG!!!!
 						// var getItem = ev.target.innerHTML.toString();
 						// var i = 0;
 						// var addItem ="";
@@ -143,7 +143,7 @@
 						// 	i++;
 						// }
 
-						newItem.innerHTML = addItem;
+						//newItem.innerHTML = addItem;
 					  expDate.innerHTML = "  days left";
 						addStar.innerHTML = "<input type=\"checkbox\">&nbsp"
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
@@ -155,19 +155,22 @@
 						var li = document.createElement("li");
 						var inputValue = document.getElementById("myInput").value;
 						var t = document.createTextNode(inputValue);
-						li.appendChild(t);
+						//console.log(t);
+						//li.appendChild(t);
+						// $("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
 						if (inputValue === '') {
 							alert("You must write something!");
 						} else {
-							document.getElementById("listUL").appendChild(li);
+							//document.getElementById("listUL").appendChild(li);
+							$("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
 						}
 						document.getElementById("myInput").value = "";
 
-						var span = document.createElement("SPAN");
-						var txt = document.createTextNode("\u00D7");
-						span.className = "close";
-						span.appendChild(txt);
-						li.appendChild(span);
+						// var span = document.createElement("SPAN");
+						// var txt = document.createTextNode("\u00D7");
+						// span.className = "close";
+						// span.appendChild(txt);
+						// li.appendChild(span);
 
 						console.log(li);
 
@@ -238,6 +241,7 @@
 						var ul = document.getElementById("listUL");
 						var li = document.createElement("li");
 						$("#listUL").append('<li>'+String(id)+'<span class="quantity"><span class="close">×</span><input id="numberOfItem" type="number" value="1"></li>');
+
 					}
 					</script>
 
