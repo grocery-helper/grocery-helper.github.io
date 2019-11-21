@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="helpPageStyle.css">
+	<link rel="stylesheet" type="text/css" href="customPageStyle.css">
 
 	<!-- JQuery -->
 	<script type="text/javascript" src='main.js'></script>
@@ -61,28 +61,16 @@
 	</div>
 	</nav>
 
-
 	<div class="container-fluid">
 		<img src="logo.png" class="centerSmall">
 
 		<div class="containerSmall">
-			<h3>Welcome to Grocery Helper.</h3>
-			<p>Making lists with Grocery Helper is easy!</p>
-			<p>Press on any help button to learn more about that feature.</p>
 		</div>
 
 		<div class="row">
 			<!-- grocery list -->
 			<div class="column" style="background-color:rgb(211, 236, 232)">
-				<h2><center>Your List<br>
-					<a href="#" data-toggle="popover" title="Making your lists"
-					data-content="This is where you can add items to your list!
-					Enter the items you want to add to your grocery list.
-					When you purchase your iten, you can check it off your list and it will be saved in your inventory.
-					Decide to not buy something? Cross it off your list!">
-					<button type="button" class="btn btn-info">Help me make a list!</button></a>
-
-				</center></h2>
+				<h2><center>Your List</center></h2>
 				<p>
 
 					<div id="myDIV" class="header">
@@ -91,6 +79,7 @@
 					</div>
 
 					<ul id="listUL" >
+
 						<li>eggs <span class="quantity"><input id="numberOfItem" type="number" value="1"> </span> <span class="close">×</span></li>
 						<li class="checked">bread<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>
 						<li>apples<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>
@@ -106,7 +95,6 @@
 						span.className = "close";
 						span.appendChild(txt);
 						myNodelist[i].appendChild(span);
-
 					}
 
 					// Click on a close button to hide the current list item
@@ -117,6 +105,7 @@
 							var div = this.parentElement;
 							div.style.display = "none";
 						}
+
 					}
 
 					// Add a "checked" symbol when clicking on a list item
@@ -132,18 +121,19 @@
 					  var expDate = row.insertCell(1);
 						var addStar = row.insertCell(2);
 						var addTrash = row.insertCell(3);
+
 					  //newItem.innerHTML = ev.target.innerHTML;
 
 						//THIS SECTION CAUSES LAG!!!!
-						var getItem = ev.target.innerHTML.toString();
-						var i = 0;
-						var addItem ="";
-						while (getItem[i] != '<') {
-							addItem = addItem.concat(getItem[i]);
-							i++;
-						}
-						newItem.innerHTML = addItem;
-						//newItem.innerHTML = "new item";
+						// var getItem = ev.target.innerHTML.toString();
+						// var i = 0;
+						// var addItem ="";
+						// while (getItem[i] != '<') {
+						// 	addItem = addItem.concat(getItem[i]);
+						// 	i++;
+						// }
+
+						//newItem.innerHTML = addItem;
 					  expDate.innerHTML = "  days left";
 						addStar.innerHTML = "<input type=\"checkbox\">&nbsp"
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
@@ -155,6 +145,7 @@
 						var li = document.createElement("li");
 						var inputValue = document.getElementById("myInput").value;
 						var t = document.createTextNode(inputValue);
+
 						//console.log(t);
 						//li.appendChild(t);
 						// $("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
@@ -187,17 +178,13 @@
 			</div>
 			<!-- inventory -->
 			<div class="column" style="background-color:rgb(188, 237, 228);">
-				<h2><center>Inventory<br>
-					<a href="#" data-toggle="popover" title="Your Inventory"
-					data-content="This is where you can view items that you currently have.
-												Staring items (⭐) adds them to your favorites list.
-												When you run out of an item, remove it from your list (🗑️).">
-					<button type="button" class="btn btn-info">What's in my inventory?</button></a></center></h2>
-					<p>Items you already have.</p>
+
+				<h2><center>Inventory</center></h2>
 
 					<table id="inventoryList">
 						<tr>
 							<th>Item</th>
+
 							<th>Days until expiration</th>
 							<th>⭐</th>
 							<th>🗑️</th>
@@ -205,12 +192,14 @@
 						<tr>
 							<td>bananas</td>
 							<td>3 days</td>
+
 							<td><input type="checkbox" class = "use-address"></td>
 							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
 						<tr>
 							<td>cheddar cheese</td>
 							<td>21 days</td>
+
 							<td><input type="checkbox" class = "use-address"></td>
 							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 						</tr>
@@ -222,10 +211,12 @@
 					  row.parentNode.removeChild(row);
 					}
 
+
 					$('.use-address').click(function () {
 							var id = $(this).closest("tr").find('td:eq(0)').text();
 							addToFav(id);
 						});
+
 
 					function addToFav(id){
 						// Add to favorites table
@@ -236,7 +227,6 @@
 						var addTrash = row.insertCell(2);
 					  starBullet.innerHTML = "⭐";
 					  itemName.innerHTML = id;
-						console.log(id);
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
 						//also add to grocery list
 						var ul = document.getElementById("listUL");
@@ -250,12 +240,8 @@
 
 			<!-- favorites -->
 			<div class="column" style="background-color:rgb(157, 236, 222);">
-				<h2><center>Favorites<center>
-					<a href="#" data-toggle="popover" title="Your Favorites"
-					data-content="These items will always be added to your grcoery list.
-					You can add items to your by starring them and remove them at any time.">
-					<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
-					<p>Your favorte items</p>
+
+				<h2><center>Favorites</center></h2>
 
 					<table id="favoritesList">
 						<col width="5">
