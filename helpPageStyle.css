@@ -120,11 +120,10 @@ padding: 0;
 #listUL  li {
 cursor: pointer;
 position: relative;
-padding: 12px 8px 12px 40px;
+padding: 12px 10px 25px 40px;
 background: #eee;
 font-size: 18px;
 transition: 0.2s;
-
 /* make the list items unselectable */
 -webkit-user-select: none;
 -moz-user-select: none;
@@ -210,6 +209,18 @@ border-radius: 0;
 
 .addBtn:hover {
 background-color: #bbb;
+}
+
+
+.quantity{
+  float:right;
+  font-size: 1rem;
+  color: #fff;
+  width: 8em;
+  font-family: 'Roboto', sans-serif, helvetica;
+  font-weight: 100;
+  margin: 0;
+  padding-right:60px;
 }
 
 
