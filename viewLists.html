@@ -24,7 +24,6 @@
 	<!-- JQuery -->
 	<script type="text/javascript" src='main.js'></script>
 
-
 	<!-- FONT AWESOME -->
 	<!-- <script src="https://kit.fontawesome.com/504d9a3113.js"></script> -->
 </head>
@@ -205,6 +204,24 @@
 						var li = document.createElement("li");
 						li.appendChild(document.createTextNode("New favorite item!"));
 						ul.appendChild(li);
+
+
+					$('.use-address').click(function () {
+							var id = $(this).closest("tr").find('td:eq(0)').text();
+							addToFav(id);
+						});
+
+
+					function addToFav(id){
+						// Add to favorites table
+						var table = document.getElementById("favoritesList");
+						var row = table.insertRow(1);
+						var starBullet = row.insertCell(0);
+					  var itemName = row.insertCell(1);
+						var addTrash = row.insertCell(2);
+					  starBullet.innerHTML = "⭐";
+					  itemName.innerHTML = id;
+						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
 
 						//also add to grocery list
 						var ul = document.getElementById("listUL");
