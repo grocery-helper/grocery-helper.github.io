@@ -9,4 +9,5 @@
 - Hit the Run button on the top right and look our for your desktop notification!
 
 Here's a demo:
-[reminders-demo](https://github.com/grocery-helper/grocery-helper.github.io/blob/master/reminders.png)
+
+![reminders-demo](https://github.com/grocery-helper/grocery-helper.github.io/blob/master/reminders.png)
