@@ -7,3 +7,6 @@
 - Copy path of reminders.py and drop it into the text box
 - Type "python" before the file path so, Automator knows it's a python script
 - Hit the Run button on the top right and look our for your desktop notification!
+
+Here's a demo:
+[reminders-demo](https://github.com/grocery-helper/grocery-helper.github.io/blob/master/reminders.png)
