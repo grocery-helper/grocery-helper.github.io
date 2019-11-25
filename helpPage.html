@@ -135,15 +135,15 @@
 					  //newItem.innerHTML = ev.target.innerHTML;
 
 						//THIS SECTION CAUSES LAG!!!!
-						var getItem = ev.target.innerHTML.toString();
-						var i = 0;
-						var addItem ="";
-						while (getItem[i] != '<') {
-							addItem = addItem.concat(getItem[i]);
-							i++;
-						}
-						newItem.innerHTML = addItem;
-						//newItem.innerHTML = "new item";
+						// var getItem = ev.target.innerHTML.toString();
+						// var i = 0;
+						// var addItem ="";
+						// while (getItem[i] != '<') {
+						// 	addItem = addItem.concat(getItem[i]);
+						// 	i++;
+						// }
+						// newItem.innerHTML = addItem;
+						newItem.innerHTML = "new item";
 					  expDate.innerHTML = "  days left";
 						addStar.innerHTML = "<input type=\"checkbox\">&nbsp"
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"

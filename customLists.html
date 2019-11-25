@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<?php include("addTo_groceryList.php"); ?>
+
 	<title>Grocery Helper</title>
 
 	<!-- SEO -->
@@ -73,17 +76,36 @@
 				<h2><center>Your List</center></h2>
 				<p>
 
-					<div id="myDIV" class="header">
+					<!-- <div id="myDIV" class="header">
 						<input type="text" id="myInput" placeholder="Enter item...">
+						<span onclick="newElement()" class="addBtn">Add Item</span>
+					</div> -->
+
+					<div id="myDIV" class="header">
+						<input type="text" id="myInput" placeholder="Enter item">
+						<input type="text" id="numItem" placeholder="Enter quantity">
+						<br>
 						<span onclick="newElement()" class="addBtn">Add Item</span>
 					</div>
 
-					<ul id="listUL" >
 
+					<ul id="listUL" >
 						<li>eggs <span class="quantity"><input id="numberOfItem" type="number" value="1"> </span> <span class="close">×</span></li>
 						<li class="checked">bread<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>
 						<li>apples<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>
 					</ul>
+
+					<!-- <table id="listUL" >
+						<tr>
+						<td>eggs <span class="quantity"><input id="numberOfItem" type="number" value="1"> </span> <span class="close">×</span></td>
+					</tr>
+					<tr>
+						<td class="checked">bread<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></td>
+					</tr>
+					<tr>
+						<td>apples<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></td>
+					</tr>
+					</table> -->
 
 					<script>
 					// Create a "close" button and append it to each list item
@@ -125,15 +147,17 @@
 					  //newItem.innerHTML = ev.target.innerHTML;
 
 						//THIS SECTION CAUSES LAG!!!!
-						// var getItem = ev.target.innerHTML.toString();
-						// var i = 0;
-						// var addItem ="";
-						// while (getItem[i] != '<') {
-						// 	addItem = addItem.concat(getItem[i]);
-						// 	i++;
-						// }
+						var getItem = ev.target.innerHTML.toString();
+						var i = 0;
+						var addItem ="";
+						while (getItem[i] != '<') {
+							addItem = addItem.concat(getItem[i]);
+							i++;
+						}
+						console.log(String(addItem));
 
-						//newItem.innerHTML = addItem;
+						newItem.innerHTML = String(addItem);
+						//newItem.innerHTML = "newItem";
 					  expDate.innerHTML = "  days left";
 						addStar.innerHTML = "<input type=\"checkbox\">&nbsp"
 						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
@@ -144,6 +168,7 @@
 					function newElement() {
 						var li = document.createElement("li");
 						var inputValue = document.getElementById("myInput").value;
+						var numValue = document.getElementById("numItem").value;
 						var t = document.createTextNode(inputValue);
 
 						//console.log(t);
@@ -153,17 +178,9 @@
 							alert("You must write something!");
 						} else {
 							//document.getElementById("listUL").appendChild(li);
-							$("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
+							$("#listUL").append('<li>'+inputValue+ " (" + numValue + ")" + '<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
 						}
 						document.getElementById("myInput").value = "";
-
-						// var span = document.createElement("SPAN");
-						// var txt = document.createTextNode("\u00D7");
-						// span.className = "close";
-						// span.appendChild(txt);
-						// li.appendChild(span);
-
-						console.log(li);
 
 						for (i = 0; i < close.length; i++) {
 							close[i].onclick = function() {
@@ -214,6 +231,7 @@
 
 					$('.use-address').click(function () {
 							var id = $(this).closest("tr").find('td:eq(0)').text();
+							console.log(id);
 							addToFav(id);
 						});
 
