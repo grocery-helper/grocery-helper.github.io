@@ -1,5 +1,12 @@
 <?php
 
+// <?php
+//     $db_host = 'remotemysql.com';
+//     $db_user = 'PVhTrKWdPv';
+//     $db_pass = 'FaPy0Vt6oB';
+//     $db_name = 'PVhTrKWdPv';
+//
+
     include 'config.php';
 
     // Create connection
@@ -9,6 +16,9 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    echo "Connected successfully";
+    <html>
+    // echo "Connected successfully";
+    console.log("Connected successfully");
+    </html>
 
 ?>
