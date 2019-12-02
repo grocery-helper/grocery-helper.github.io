@@ -6,5 +6,5 @@
 
   onFavoritesAddGroceryListItem($user, $item);
 
-  $conn->close();
+  mysqli_close($conn);
  ?>
