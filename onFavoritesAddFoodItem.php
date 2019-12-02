@@ -7,5 +7,5 @@
 
   onFavoritesAddFoodItem($user, $item, $quantity);
 
-  $conn->close();
+  mysqli_close($conn);
  ?>
