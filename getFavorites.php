@@ -4,9 +4,10 @@
 
   include 'db_connection.php';
 
-  getFavorites($user)
+  function getFavorites($user)
   {
-    $sql = "SELECT FoodName FROM Favorites WHERE Username = $user";
+    global $conn;
+    $sql = "SELECT FoodName FROM Favorites WHERE Username = '$user'";
     $result = mysqli_query($conn, $sql);
     $rows = array();
     while($r = mysqli_fetch_assoc($result)) {
@@ -16,6 +17,6 @@
 
   getFavorites($user);
 
-  $conn->close();
+  mysqli_close($conn);
 
 ?>
