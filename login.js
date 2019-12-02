@@ -12,9 +12,11 @@ $(document).ready(function(){
                         const res = response.responseText.split(/\r?\n/);
                         const result = res[res.length - 1];
                         if (result === 'error') {
-                            alert('wrong password!');
+                            alert('Wrong password!');
+                        } else {
+                            console.log('logged in');
+                            window.location.href = "index.php"
                         }
-                        console.log('logged in');
                     },
                     error: function () {
                         alert('wrong password!');
