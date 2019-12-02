@@ -4,9 +4,10 @@
 
   include 'db_connection.php';
 
-  getInventory($user)
+  function getInventory($user)
   {
-    $sql = "SELECT FoodName, Quantity, ExpDate FROM Inventory WHERE Username = $user";
+    global $conn;
+    $sql = "SELECT FoodName, Quantity, ExpDate FROM Inventory WHERE Username = '$user'";
     $result = mysqli_query($conn, $sql);
     $rows = array();
     while($r = mysqli_fetch_assoc($result)) {
@@ -16,5 +17,5 @@
 
   getInventory($user);
 
-  $conn->close();
+  mysqli_close($conn);
 ?>
