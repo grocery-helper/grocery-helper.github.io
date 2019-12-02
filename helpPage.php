@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,16 +50,26 @@
 
 		<ul class="navbar-nav stroke">
 			<li class="navbar-item">
-				<a class="nav-link" href="index.html">Home</a>
+				<a class="nav-link" href="index.php">Home</a>
 			</li>
 			<li class="navbar-item">
-				<a class="nav-link" href="helpPage.html">Help</a>
+				<a class="nav-link" href="helpPage.php">Help</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="viewLists.html">My Lists</a>
+				<a class="nav-link" href="viewLists.php">My Lists</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link"href="login.html">Login</a>
+				<?php
+					if ( isset( $_SESSION['user'] ) ) {
+				?>
+					<a class="nav-link"href="logout.php">Logout</a>
+				<?php
+					} else {
+				?>
+					<a class="nav-link"href="loginPage.php">Login</a>
+				<?php 
+					}
+				?>
 			</li>
 		</ul>
 	</div>

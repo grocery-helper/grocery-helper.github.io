@@ -1,4 +1,7 @@
 <?php
+  session_start();
+  echo session_id();
+  // $_SESSION['user'] = 'a';
   header('Access-Control-Allow-Origin: *');
   //USER INPUTS
   $name = $_POST["username"];
@@ -52,6 +55,8 @@ function doPasswordsMatch($password, $pass){
     $password =  getPassword($result);
 
     if (doPasswordsMatch($password, $pass)) {
+      $_SESSION['user'] = strval($name);
+
       echo("ok");
     } else {
       echo("error");
