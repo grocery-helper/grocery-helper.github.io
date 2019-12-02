@@ -6,7 +6,7 @@ $(document).ready(function(){
             if (username !== '' && password !== '') {
                 $.ajax({
                     type: 'POST',
-                    url:'http://localhost:8080/app/api/login.php',
+                    url:'http://localhost:8080/app/api/create_user.php',
                     data: {username: username, pwd: password},
                     complete: function (response) {
                         const res = response.responseText.split(/\r?\n/);
@@ -14,7 +14,7 @@ $(document).ready(function(){
                         if (result === 'error') {
                             alert('wrong password!');
                         }
-                        console.log('logged in');
+                        console.log('user created', response);
                     },
                     error: function () {
                         alert('wrong password!');

@@ -11,7 +11,7 @@
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="bootstrap-social.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -19,14 +19,14 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="loginStyle.css">
 
 	<!-- JQuery -->
-	<script type="text/javascript" src='main.js'></script>
+	<script type="text/javascript" src='login.js'></script>
 
 
 	<!-- FONT AWESOME -->
-	<script src="https://kit.fontawesome.com/504d9a3113.js"></script>
+	<!-- <script src="https://kit.fontawesome.com/504d9a3113.js"></script> -->
 </head>
 
 <body>
@@ -46,7 +46,7 @@
 	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 		<ul class="navbar-nav stroke">
 			<li class="navbar-item">
-				<a class="nav-link" href="#">Home</a>
+				<a class="nav-link" href="index.php">Home</a>
 			</li>
 			<li class="navbar-item">
 				<a class="nav-link" href="helpPage.html">Help</a>
@@ -55,7 +55,7 @@
 				<a class="nav-link" href="viewLists.html">My Lists</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link"href="login.html">Login</a>
+				<a class="nav-link"href="#">Login</a>
 			</li>
 		</ul>
 	</div>
@@ -67,19 +67,24 @@
 	<img src="logo.png" class="center">
 
 	<div class="container">
-		<h1>Build smart Grocery Lists.</h1>
-		<p>Grocery Helper analyzes your past shopping behavior. We keep track so, you don't have to!</p>
-		<p>For instance, we remind you of when items are about to expire.</p>
-		<p>No other grocery app does that!</p>
-		<button class="btn" href="helpPage.html">Get Started</button>
+        <div class="login-background">
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="login-text">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="login-text">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+            </form>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Log In</button>
+        <a href="signupPage.php">Don't have an account? Sign Up!</a>
 	</div>
 </div>
 
-
-<!-- FOOTER -->
-<footer class="page-footer">
-	<a href="https://github.com/grocery-helper/grocery-helper.github.io"><i align="right" class="fab fa-github github" aria-hidden="true"></i></a>
-</footer>
 
 </body>
 </html>
