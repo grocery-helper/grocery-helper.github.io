@@ -7,17 +7,20 @@
 
   function isUserExists($username)
   {
+    global $conn;
     $result = mysqli_query($conn, "SELECT * FROM User WHERE Username = $username");
     return mysqli_num_rows($result);
   }
 
   function isSQLCommandSuccessful($sql)
   {
-    return $conn->query($sql);
+    global $conn;
+    return mysqli_query($conn, $sql) == TRUE;
   }
 
   if(isUserExists($name) == 0) //need to get $name from somewhere?
   {
+    global $conn;
     $timestamp = date("Y/m/d");
     $sql = "INSERT INTO User (Username, Password, CreationDate)
     VALUES ($name, $pass, $timestamp)";
@@ -32,5 +35,5 @@
   {
     echo "This username has already been taken";
   }
-  $conn->close();
+  mysqli_close($conn);
 ?>
