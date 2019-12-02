@@ -6,11 +6,12 @@ include 'db_connection.php';
 
 function onFavoritesRemoveItem($user, $item)
 {
-  $sql = "DELETE FROM Favorites WHERE Username = $user AND FoodName = $item";
-  if ($conn->query($sql) === TRUE) {
+  global $conn;
+  $sql = "DELETE FROM Favorites WHERE Username = '$user' AND FoodName = '$item'";
+  if (mysqli_query($conn, $sql)) {
       echo "Item deleted successfully";
   } else {
-      echo "Error deleting item: " . $conn->error;
+      echo "Error deleting item: ";
   }
 }
 
