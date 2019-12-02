@@ -11,10 +11,12 @@ $(document).ready(function(){
                     complete: function (response) {
                         const res = response.responseText.split(/\r?\n/);
                         const result = res[res.length - 1];
-                        if (result === 'error') {
-                            alert('wrong password!');
+                        if (result === 'User created successfully') {
+                            console.log('user created', result);
+                            window.location.href = "loginPage.php";
+                        } else {
+                            alert('Error, user exists already!');
                         }
-                        console.log('user created', response);
                     },
                     error: function () {
                         alert('wrong password!');
