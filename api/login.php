@@ -1,7 +1,5 @@
 <?php
   session_start();
-  echo session_id();
-  // $_SESSION['user'] = 'a';
   header('Access-Control-Allow-Origin: *');
   //USER INPUTS
   $name = $_POST["username"];
