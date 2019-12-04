@@ -101,7 +101,7 @@ if ($conn->connect_error) {
 		<p>Grocery Helper analyzes your past shopping behavior. We keep track so, you don't have to!</p>
 		<p>For instance, we remind you of when items are about to expire.</p>
 		<p>No other grocery app does that!</p>
-		<button class="btn" href="helpPage.php">Get Started</button>
+		<a href="helpPage.php"><button class="btn">Get Started</button></a>
 	</div>
 </div>
 
