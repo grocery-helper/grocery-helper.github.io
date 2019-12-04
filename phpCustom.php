@@ -7,10 +7,7 @@ $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-<html>
 console.log("Connected successfully");
-</html>
-
 ?>
 
 <!DOCTYPE html>
@@ -158,7 +155,8 @@ console.log("Connected successfully");
             <?php
               include 'addTo_groceryList.php';
 
-              if(isItemExists($user, addItem))
+              // if(isItemExists($user, addItem)) {}
+
 
              ?>
 
