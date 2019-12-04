@@ -1,0 +1,98 @@
+/*NAVBAR*/
+.navbar{
+  background-color: rgb(119, 187, 177);
+    border: none;
+}
+
+.navbar .navbar-toggler{
+  border-color: white;
+  color: white;
+}
+
+.navbar-brand{
+  color: white !important;
+  position: relative;
+}
+
+.collapse ul.navbar-nav>li>a{
+  color:  white;
+}
+
+.collapse ul.stroke>li>a{
+  position: relative;
+}
+
+.collapse ul.stroke>li>a:after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: white;
+    height: 1px;
+}
+
+.collapse ul.stroke>li>a:hover:after{
+  width: 100%;
+}
+
+/* VIEW LISTS PAGE*/
+
+.container-fluid{
+height: 734px;
+/*background-color: rgb(119, 187, 127, 0.2);*/
+background-color: white;
+}
+
+/*LOGO*/
+.centerSmall {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 15%;
+}
+
+/*TEXT*/
+.containerSmall{
+	margin-top: 8%;
+	height: 80px;
+	/*background-color: rgb(119, 187, 177, 0.2);*/
+	text-align: center;
+	color: ;
+}
+
+.containerSmall h1, p{
+	color: rgb(119, 187, 177);
+}
+
+
+/*BUTTON*/
+.buttons{
+	margin-top: 2%;
+	text-align: center;
+	/*background-color: rgb(119, 187, 177, 0.3);*/
+}
+.buttons .btn {
+	  background-color:rgb(119, 187, 177);
+	  border-radius: 50em !important;
+	  color: white;
+	  padding: 12px 30px;
+	  cursor: pointer;
+	  font-size: 17px;
+	  font-family: Arial;
+	  margin-left: 0.5%;
+	  margin-right: 1.5%;
+	}
+
+.buttons .btn a{
+  text-decoration: none;
+  color: white !important;
+}
+
+/* responsive buttons: https://codepen.io/dlekovic/pen/eDlkC*/
+.buttons .btn:hover, .btn:focus {
+    opacity: 0.8;
+}
