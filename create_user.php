@@ -39,5 +39,5 @@
   {
     echo "This username has already been taken";
   }
-  $conn->close();
+mysqli_close($conn);
 ?>
