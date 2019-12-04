@@ -71,49 +71,34 @@ if ($conn->connect_error) {
 					<a class="nav-link" href="viewLists.php">My Lists</a>
 				</li>
 				<li class="nav-item">
-				<li class="nav-item">
-					<a class="nav-link" href="phpCustom2.php">Coming Soon!</a>
-				</li>
-				<li class="nav-item">
-					<?php
-					if ( isset( $_SESSION['user'] ) ) {
-						?>
-						<a class="nav-link"href="logout.php">Logout</a>
+					<li class="nav-item">
+						<a class="nav-link" href="phpCustom2.php">Coming Soon!</a>
+					</li>
+					<li class="nav-item">
 						<?php
-					} else {
+						if ( isset( $_SESSION['user'] ) ) {
+							?>
+							<a class="nav-link"href="logout.php">Logout</a>
+							<?php
+						} else {
+							?>
+							<a class="nav-link"href="loginPage.php">Login</a>
+							<?php
+						}
 						?>
-						<a class="nav-link"href="loginPage.php">Login</a>
-						<?php
-					}
-					?>
-				</li>
-			</ul>
-		</div>
-	</nav>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
 
-	<div class="container-fluid">
-		<img src="logo.png" class="centerSmall">
+		<div class="container-fluid">
+			<img src="logo.png" class="centerSmall">
 
-		<div class="containerSmall">
-			<h3>Welcome to Grocery Helper.</h3>
-			<p>Making lists with Grocery Helper is easy!</p>
-			<p>Press on any help button to learn more about that feature.</p>
-		</div>
-
-		<div class="row">
-			<!-- grocery list -->
-			<div class="column" style="background-color:rgb(211, 236, 232)">
-				<h2><center>Your List<br>
-					<a href="#" data-toggle="popover" title="Making your lists"
-					data-content="This is where you can add items to your list!
-					Select the items you want to purchase.
-					When you purchase your item, it will be saved in your inventory.">
-					<button type="button" class="btn btn-info">Help me make a list!</button></a>
-
-				</center></h2>
-
-				<p>Here are items you can add</p>
+			<div class="containerSmall">
+				<h3>Welcome to Grocery Helper.</h3>
+				<p>Making lists with Grocery Helper is easy!</p>
+				<p>Press on any help button to learn more about that feature.</p>
 
 				<?php
 				include 'db_connection.php';
@@ -141,8 +126,11 @@ if ($conn->connect_error) {
 				$messages = "";
 				$messages .= $message;
 				echo "<form action='' method='POST'>";
+				echo "<table class=\"row\">";
+
 				foreach($foodCategory as $group)
 				{
+					echo "<td>";
 					$result = mysqli_query($conn, "SELECT FoodName FROM FoodItems WHERE FoodCategory = '$group'");
 					echo "<h5>";
 					echo "$group: ";
@@ -153,104 +141,90 @@ if ($conn->connect_error) {
 					{
 						echo "<option value ='" . $row['FoodName'] . "'>" . $row['FoodName']. "</option>";
 					}
-
 					echo "</select>";
 					echo "<br>";
 					echo "<br>";
-				}
 
-				echo "<input type='submit' name='submit'/>";
+					echo "</td>";
+				}
+				echo "</table>";
+				echo "<center>";
+				echo "<input type='submit' name='submit' value='Add to Grocery List' align='middle' class='addBtn'/>";
+				echo "</center>";
 				echo "</form>";
 				//mysqli_close($conn);
 				?>
 
 			</div>
-			<!-- inventory -->
-			<div class="column" style="background-color:rgb(188, 237, 228);">
-				<h2><center>Inventory<br>
-					<a href="#" data-toggle="popover" title="Your Inventory"
-					data-content="This is where you can view items that you currently have.
-					starring items (⭐) adds them to your favorites list.
-					When you run out of an item, remove it from your list (🗑️).">
-					<button type="button" class="btn btn-info">What's in my inventory?</button></a></center></h2>
-					<p>Items you already have.</p>
 
-					<table id="inventoryList">
-						<tr>
-							<th>Item</th>
-							<th>Days until expiration</th>
-							<th>⭐</th>
-							<th>🗑️</th>
-						</tr>
-						<tr>
-							<td>bananas</td>
-							<td>3 days</td>
-							<td><input type="checkbox" class = "use-address"></td>
-							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
-						</tr>
-						<tr>
-							<td>cheddar cheese</td>
-							<td>21 days</td>
-							<td><input type="checkbox" class = "use-address"></td>
-							<td><input type="checkbox" onclick="deleteRow(this)"/></td>
-						</tr>
+			<div class="row">
+				<!-- grocery list -->
+				<div class="column" style="background-color:rgb(211, 236, 232)">
+					<h2><center>Your List<br>
+						<a href="#" data-toggle="popover" title="Making your lists"
+						data-content="This is where you can add items to your list!
+						Select the items you want to purchase.
+						When you purchase your item, it will be saved in your inventory.">
+						<button type="button" class="btn btn-info">Help me make a list!</button></a>
 
-						<?php
+					</center></h2>
 
-						if(isset($_POST['submit']))
+					<p>Here are items you can add</p>
+
+					<?php
+					echo "<table id=\"groceryList\">";
+					echo "<th></th>";
+					echo "<th>✅</th>";
+					echo "<th>🗑️</th>";
+					if(isset($_POST['submit']))
+					{
+						if(isset($_POST['items']))
 						{
-							if(isset($_POST['items']))
+							foreach($_POST['items'] as $item)
 							{
-								foreach($_POST['items'] as $item)
-								{
+								// $sql = "INSERT INTO GroceryList (Username, FoodName) VALUES '$user', '$item'";
+								// mysqli_query($conn, $sql);
 
-									// $sql = "INSERT INTO GroceryList (Username, FoodName) VALUES '$user', '$item'";
-    							// mysqli_query($conn, $sql);
+								echo "<tr>";
+								echo "<td>";
+								print "$item";
+								echo "</td>";
 
-									echo "<tr>";
-									echo "<td>";
-									print "$item";
-									echo "</td>";
-									echo "<td>";
+								//$result = mysqli_query("SELECT ExpDate FROM FoodItems WHERE User = $user AND FoodName= '$item'");
+								$result = mysqli_query($conn, "SELECT * FROM FoodItems WHERE FoodName= '$item'");
+								$row = mysqli_fetch_assoc($result);
 
-									//$result = mysqli_query("SELECT ExpDate FROM FoodItems WHERE User = $user AND FoodName= '$item'");
-									$result = mysqli_query($conn, "SELECT * FROM FoodItems WHERE FoodName= '$item'");
-									$row = mysqli_fetch_assoc($result);
+								echo "<td><input type=\"checkbox\" class = \"use-address-toInventory\"></td>";
+								echo "<td><input type=\"checkbox\" onclick=\"deleteRow(this)\"/></td>";
+								echo "</tr>";
 
-									print $row['ShelfLifeInDays'];
-									echo " days";
-									echo "</td>";
-									echo "<td><input type=\"checkbox\" class = \"use-address\"></td>";
-									echo "<td><input type=\"checkbox\" onclick=\"deleteRow(this)\"/></td>";
-									echo "</tr>";
+								//add to db
+								$sql = "INSERT INTO Inventory (Username, FoodName, Quantity, ShelfLifeInDays) SELECT
+								Username, FoodName, Quantity, ShelfLifeInDays FROM GroceryList WHERE FoodName = '$item'";
+								mysqli_query($conn, $sql);
+								//$today = setPurchaseDate($user, $item);
+								//setExpDate($user, $item, $today);
 
-									//add to db
-									$sql = "INSERT INTO Inventory (Username, FoodName, Quantity, ShelfLifeInDays) SELECT
-							        Username, FoodName, Quantity, ShelfLifeInDays FROM GroceryList WHERE FoodName = '$item'";
-							    mysqli_query($conn, $sql);
-							    //$today = setPurchaseDate($user, $item);
-							    //setExpDate($user, $item, $today);
-
-								}
-							}
-							else
-							{
-								echo "alert('Select an option first!')";
 							}
 						}
+						else
+						{
+							echo "alert('Select an option first!')";
+						}
+					}
+					echo "</table>";
+					?>
 
-						?>
-					</table>
 					<script>
 
-					$('.use-address').click(function () {
+					$('.use-address-toInventory').click(function () {
 						var id = $(this).closest("tr").find('td:eq(0)').text();
-						addToFav(id);
+						addToInventory(id);
 					});
 
-					function addToFav(id){
+					function addToInventory(id){
 						// Add to favorites table
-						var table = document.getElementById("favoritesList");
+						var table = document.getElementById("inventoryList");
 						var row = table.insertRow(1);
 						var starBullet = row.insertCell(0);
 						var itemName = row.insertCell(1);
@@ -268,54 +242,157 @@ if ($conn->connect_error) {
 					</script>
 
 				</div>
+				<!-- inventory -->
+				<div class="column" style="background-color:rgb(188, 237, 228);">
+					<h2><center>Inventory<br>
+						<a href="#" data-toggle="popover" title="Your Inventory"
+						data-content="This is where you can view items that you currently have.
+						starring items (⭐) adds them to your favorites list.
+						When you run out of an item, remove it from your list (🗑️).">
+						<button type="button" class="btn btn-info">What's in my inventory?</button></a></center></h2>
+						<p>Items you already have.</p>
 
-				<!-- favorites -->
-				<div class="column" style="background-color:rgb(157, 236, 222);">
-					<h2><center>Favorites<center>
-						<a href="#" data-toggle="popover" title="Your Favorites"
-						data-content="These items will always be added to your grocery list.
-						You can add items to your by starring them and remove them at any time.">
-						<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
-						<p>Your favorte items</p>
-
-						<table id="favoritesList">
-							<col width="30">
-							<col width="200" style="text-align:left">
-							<col width="30" style="text-align:left">
+						<table id="inventoryList">
 							<tr>
-								<th> </th>
-								<th> </th>
+								<th>Item</th>
+								<th>Days until expiration</th>
+								<th>⭐</th>
 								<th>🗑️</th>
 							</tr>
 							<tr>
-								<td>⭐</td>
-								<td>eggs</td>
+								<td>bananas</td>
+								<td>3 days</td>
+								<td><input type="checkbox" class = "use-address"></td>
 								<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 							</tr>
 							<tr>
-								<td>⭐</td>
-								<td>apples</td>
+								<td>cheddar cheese</td>
+								<td>21 days</td>
+								<td><input type="checkbox" class = "use-address"></td>
 								<td><input type="checkbox" onclick="deleteRow(this)"/></td>
 							</tr>
 
-							<script>
-							function deleteRow(btn) {
-								var row = btn.parentNode.parentNode;
-								row.parentNode.removeChild(row);
+							<!-- <?php
+
+							if(isset($_POST['submit']))
+							{
+								if(isset($_POST['items']))
+								{
+									foreach($_POST['items'] as $item)
+									{
+
+										// $sql = "INSERT INTO GroceryList (Username, FoodName) VALUES '$user', '$item'";
+										// mysqli_query($conn, $sql);
+
+										echo "<tr>";
+										echo "<td>";
+										print "$item";
+										echo "</td>";
+										echo "<td>";
+
+										//$result = mysqli_query("SELECT ExpDate FROM FoodItems WHERE User = $user AND FoodName= '$item'");
+										$result = mysqli_query($conn, "SELECT * FROM FoodItems WHERE FoodName= '$item'");
+										$row = mysqli_fetch_assoc($result);
+
+										print $row['ShelfLifeInDays'];
+										echo " days";
+										echo "</td>";
+										echo "<td><input type=\"checkbox\" class = \"use-address\"></td>";
+										echo "<td><input type=\"checkbox\" onclick=\"deleteRow(this)\"/></td>";
+										echo "</tr>";
+
+										//add to db
+										$sql = "INSERT INTO Inventory (Username, FoodName, Quantity, ShelfLifeInDays) SELECT
+										Username, FoodName, Quantity, ShelfLifeInDays FROM GroceryList WHERE FoodName = '$item'";
+										mysqli_query($conn, $sql);
+										//$today = setPurchaseDate($user, $item);
+										//setExpDate($user, $item, $today);
+
+									}
+								}
+								else
+								{
+									echo "alert('Select an option first!')";
+								}
 							}
-							</script>
 
-						</div>
-
+							?> -->
+						</table>
 						<script>
-						$(document).ready(function(){
-							$('[data-toggle="popover"]').popover();
+
+						$('.use-address').click(function () {
+							var id = $(this).closest("tr").find('td:eq(0)').text();
+							addToFav(id);
 						});
+
+						function addToFav(id){
+							// Add to favorites table
+							var table = document.getElementById("favoritesList");
+							var row = table.insertRow(1);
+							var starBullet = row.insertCell(0);
+							var itemName = row.insertCell(1);
+							var addTrash = row.insertCell(2);
+							starBullet.innerHTML = "⭐";
+							itemName.innerHTML = id;
+							console.log(id);
+							addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
+							//also add to grocery list
+							var ul = document.getElementById("listUL");
+							var li = document.createElement("li");
+							$("#listUL").append('<li>'+String(id)+'<span class="quantity"><span class="close">×</span><input id="numberOfItem" type="number" value="1"></li>');
+
+						}
 						</script>
 
 					</div>
 
-				</div>
+					<!-- favorites -->
+					<div class="column" style="background-color:rgb(157, 236, 222);">
+						<h2><center>Favorites<center>
+							<a href="#" data-toggle="popover" title="Your Favorites"
+							data-content="These items will always be added to your grocery list.
+							You can add items to your by starring them and remove them at any time.">
+							<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
+							<p>Your favorte items</p>
 
-			</body>
-			</html>
+							<table id="favoritesList">
+								<col width="30">
+								<col width="200" style="text-align:left">
+								<col width="30" style="text-align:left">
+								<tr>
+									<th> </th>
+									<th> </th>
+									<th>🗑️</th>
+								</tr>
+								<tr>
+									<td>⭐</td>
+									<td>eggs</td>
+									<td><input type="checkbox" onclick="deleteRow(this)"/></td>
+								</tr>
+								<tr>
+									<td>⭐</td>
+									<td>apples</td>
+									<td><input type="checkbox" onclick="deleteRow(this)"/></td>
+								</tr>
+
+								<script>
+								function deleteRow(btn) {
+									var row = btn.parentNode.parentNode;
+									row.parentNode.removeChild(row);
+								}
+								</script>
+
+							</div>
+
+							<script>
+							$(document).ready(function(){
+								$('[data-toggle="popover"]').popover();
+							});
+							</script>
+
+						</div>
+
+					</div>
+
+				</body>
+				</html>
