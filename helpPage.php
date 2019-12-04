@@ -148,13 +148,13 @@ if ($conn->connect_error) {
 					echo "</td>";
 				}
 				echo "</table>";
-				echo "<center>";
+				echo "<div class='btnHolder'>";
 				echo "<input type='submit' name='submit' value='Add to Grocery List' align='middle' class='addBtn'/>";
-				echo "</center>";
+				echo "</div>";
 				echo "</form>";
 				//mysqli_close($conn);
 				?>
-
+			<br>
 			</div>
 
 			<div class="row">
