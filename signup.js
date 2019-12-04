@@ -6,16 +6,16 @@ $(document).ready(function(){
             if (username !== '' && password !== '') {
                 $.ajax({
                     type: 'POST',
-                    url:'http://localhost:8080/grocery-helper.github.io/login.php',
+                    url:'http://localhost:8080/grocery-helper.github.io/create_user.php',
                     data: {username: username, pwd: password},
                     complete: function (response) {
                         const res = response.responseText.split(/\r?\n/);
                         const result = res[res.length - 1];
-                        if (result === 'error') {
-                            alert('Wrong password!');
+                        if (result === 'User created successfully') {
+                            console.log('user created', result);
+                            window.location.href = "loginPage.php";
                         } else {
-                            console.log('logged in');
-                            window.location.href = "index.php"
+                            alert('Error, user exists already!');
                         }
                     },
                     error: function () {
