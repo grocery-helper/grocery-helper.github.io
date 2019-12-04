@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 <html>
 <head>
 
-	<title>Grocery Helper</title>
+	<title>Custom | Grocery Helper</title>
 	<!-- SEO -->
 	<meta charset="utf-8" http-equiv="content-type" content="text/html">
 	<meta name="keywords"  content="grocery, helper, grocery helper, grocery app, Santa Clara University, SCU, Santa Clara">

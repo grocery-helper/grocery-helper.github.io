@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>View Lists</title>
+	<title>View Lists | Grocery Helper</title>
 
 	<!-- SEO -->
 	<meta charset="utf-8" http-equiv="content-type" content="text/html">
