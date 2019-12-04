@@ -1,4 +1,8 @@
 <?php
+	session_start();
+?>
+
+<?php
 include 'config.php';
 // Create connection
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
@@ -7,9 +11,7 @@ $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-<html>
-console.log("Connected successfully");
-</html>
+// console.log("Connected successfully");
 
 ?>
 
@@ -72,8 +74,18 @@ console.log("Connected successfully");
           <a class="nav-link" href="viewLists.html">My Lists</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"href="login.html">Login</a>
-        </li>
+				<?php
+					if ( isset( $_SESSION['user'] ) ) {
+				?>
+					<a class="nav-link"href="logout.php">Logout</a>
+				<?php
+					} else {
+				?>
+					<a class="nav-link"href="loginPage.php">Login</a>
+				<?php
+					}
+				?>
+			</li>
       </ul>
     </div>
   </nav>
@@ -105,104 +117,155 @@ console.log("Connected successfully");
             <li>apples<span class="quantity"><span class="close">×</span></li>
           </ul>
 
+          <?php
+          echo '<script type="text/javascript">';
+          //echo '// Create a "close" button and append it to each list item';
+          echo 'var myNodelist = [document.getElementById("listUL")];';
+          echo 'var i;';
+          echo 'for (i = 0; i < myNodelist.length; i++) {';
+          echo 'var span = document.createElement("SPAN");';
+          echo 'var txt = document.createTextNode("\u00D7");';
+          echo 'span.className = "close";';
+          echo 'span.appendChild(txt);';
+          echo 'myNodelist[i].appendChild(span);';
+          echo '}';
+          echo "\n";
+          //echo '// Click on a close button to hide the current list item';
+          echo "\n";
+          echo 'var close = document.getElementsByClassName("close");';
+          echo 'var i;';
+          echo 'for (i = 0; i < close.length; i++) {';
+          echo 'close[i].onclick = function() {';
+          echo 'var div = this.parentElement;';
+          echo 'div.style.display = "none";';
+          echo '}';
+          echo "\n";
+          echo '}';
+          echo "\n";
+          //echo '// Add a "checked" symbol when clicking on a list item';
+          echo 'var list = document.querySelector("#listUL");';
+          echo 'list.addEventListener(\'click\', function(ev) {';
+          echo 'if (ev.target.tagName === \'LI\') {';
+          echo 'ev.target.classList.toggle(\'checked\');';
+          echo '}';
+          echo "\n";
+          //echo '// Add to inventory table';
+          echo 'var table = document.getElementById("inventoryList");';
+          echo 'var row = table.insertRow(1);';
+          echo 'var newItem = row.insertCell(0);';
+          echo 'var expDate = row.insertCell(1);';
+          echo 'var addStar = row.insertCell(2);';
+          echo 'var addTrash = row.insertCell(3);';
+          echo "\n";
+          //echo '//newItem.innerHTML = ev.target.innerHTML;';
+          echo "\n";
+          //echo '//get item name';
+          echo 'var getItem = ev.target.innerHTML.toString();';
+          echo 'var i = 0;';
+          echo 'var addItem ="";';
+          echo 'while (getItem[i] != '<') {';
+          echo 'addItem = addItem.concat(getItem[i]);';
+          echo 'i++;';
+          echo '}';
+          echo "\n";
+          echo 'newItem.innerHTML = String(addItem);';
+          echo "\n";
+          // echo '//get item expiration date of a CERTAIN ITEM';
+          // echo '// <?php';
+          // echo '//   // $user = $_POST["username"];';
+          // echo '//   function daysTilExpr($exprDate)';
+          // echo '//   {';
+          // echo '//     // Calulating the difference in timestamps';
+          // echo '//     $diff = strtotime(date("Y/m/d")) - strtotime($exprDate);';
+          // echo '//     // 1 day = 24 hours';
+          // echo '//     // 24 * 60 * 60 = 86400 seconds';
+          // echo '//     return round($diff / 86400);';
+          // echo '//   }';
+          // echo '//   $result = mysqli_query("SELECT * FROM Inventory WHERE User = $user ORDER BY ExpDate Desc");';
+          // echo '//   $queryResultArray = mysqli_fetch_array($result);';
+          // echo '//   foreach($queryResultArray as $row)';
+          // echo '//   {';
+          // echo '//     $dateDiff = daysTilExpr($row[\'ExpDate\']);';
+          // echo '//     if($dateDiff > 3)';
+          // echo '//       break;';
+          // echo '//     if($dateDiff < 0)';
+          // echo '//       $absDateDiff = abs($dateDiff);';
+          // echo '//       echo "expDate.innerHTML = \"item has been expired for "+ $absDateDiff+ " days";';
+          // echo '//     if($dateDiff <= 3 && $dateDiff >= 1)';
+          // echo '//       echo "expDate.innerHTML = "+$dateDiff + " days left\"";';
+          // echo '//     else';
+          // echo '//       echo "expDate.innerHTML = \"Expires today\"";';
+          // echo '//   }';
+          // echo
+          echo "\n";
+          echo "\n";
+          // echo '//newItem.innerHTML = "newItem";';
+          // echo '//expDate.innerHTML = "  days left";';
+          echo 'addStar.innerHTML = "<input type=\"checkbox\" class =\"use-address\">";';
+          echo 'addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\">";';
+          echo 'console.log(row);';
+          echo '}, false);';
+          echo "\n";
+          echo "\n";
+          echo "\n";
+          //echo '// Create a new list item when clicking on the "Add" button';
+          echo "\n";
+          echo 'function newElement() {';
+          echo 'var li = document.createElement("li");';
+          echo 'var inputValue = document.getElementById("myInput").value;';
+          echo 'var numValue = document.getElementById("numItem").value;';
+          echo 'var t = document.createTextNode(inputValue);';
+          echo "\n";
+          // echo '//console.log(t);';
+          // echo '//li.appendChild(t);';
+          // echo '// $("#listUL").append(\'<li>\'+inputValue+\'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>\');';
+          echo 'if (inputValue === \'\') {';
+          echo 'alert("You must write something!");';
+          echo '} else {';
+          //echo '//document.getElementById("listUL").appendChild(li);';
+          echo 'if (numItem === \'\') {';
+          echo '$("#listUL").append(\'<li>\'+inputValue+ \'<span class="close">×</span></li>\');';
+          echo '} else {';
+          echo '$("#listUL").append(\'<li>\'+inputValue+ " (" + numValue + ")" + \'<span class="close">×</span></li>\');';
+          echo '}';
+          echo '}';
+          echo "\n";
+          echo "\n";
+          echo '$_SESSION[\'foodItem\'] = inputValue;';
+          echo '$_SESSION[\'numItem\'] = numValue;';
+          echo "\n";
+          echo "\n";
+          echo 'document.getElementById("myInput").value = "";';
+          echo 'document.getElementById("numItem").value = "";';
+          echo "\n";
+          echo 'for (i = 0; i < close.length; i++) {';
+          echo 'close[i].onclick = function() {';
+          echo 'var div = this.parentElement;';
+          echo 'div.style.display = "none";';
+          echo '}';
+          echo '}';
+          echo '}';
+          //echo '//';
+          echo "\n";
+          echo '<?php';
+          echo 'include \'addTo_groceryList.php\';';
+          echo 'if(isItemExists($user, $item) > 0)';
+          echo '{';
+          echo 'onGroceryListInsertFoodItem($user, $item, $quantity);';
+          echo '}';
+          echo 'else';
+          echo '{';
+          echo 'onGroceryListUpdateFoodItem($user, $item, $quantity);';
+          echo '}';
+          echo '$conn->close();';
+          echo '?>';
+          echo '</script>';
+          echo "\n";
+          ?>
 
-          <script type="text/javascript">
-          // Create a "close" button and append it to each list item
-          var myNodelist = [document.getElementById("listUL")]; // document.getElementsByTagName("LI");
-          var i;
-          for (i = 0; i < myNodelist.length; i++) {
-            var span = document.createElement("SPAN");
-            var txt = document.createTextNode("\u00D7");
-            span.className = "close";
-            span.appendChild(txt);
-            myNodelist[i].appendChild(span);
-          }
-
-          // Click on a close button to hide the current list item
-          var close = document.getElementsByClassName("close");
-          var i;
-          for (i = 0; i < close.length; i++) {
-            close[i].onclick = function() {
-              var div = this.parentElement;
-              div.style.display = "none";
-            }
-
-          }
-
-          // Add a "checked" symbol when clicking on a list item
-          var list = document.querySelector("#listUL");
-          list.addEventListener('click', function(ev) {
-            if (ev.target.tagName === 'LI') {
-              ev.target.classList.toggle('checked');
-            }
-            // Add to inventory table
-            var table = document.getElementById("inventoryList");
-            var row = table.insertRow(1);
-            var newItem = row.insertCell(0);
-            var expDate = row.insertCell(1);
-            var addStar = row.insertCell(2);
-            var addTrash = row.insertCell(3);
-
-            //newItem.innerHTML = ev.target.innerHTML;
-
-            //get item name
-            var getItem = ev.target.innerHTML.toString();
-            var i = 0;
-            var addItem ="";
-            while (getItem[i] != '<') {
-              addItem = addItem.concat(getItem[i]);
-              i++;
-            }
-
-            //get item expiration date
-            <?php
-              include 'addTo_groceryList.php';
-
-              if(isItemExists($user, addItem))
-
-             ?>
-
-            newItem.innerHTML = String(addItem);
-            //newItem.innerHTML = "newItem";
-            expDate.innerHTML = "  days left";
-            addStar.innerHTML = "<input type=\"checkbox\" class =\"use-address\">";
-            addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\">";
-            console.log(row);
-          }, false);
 
 
 
-          // Create a new list item when clicking on the "Add" button
-          function newElement() {
-            var li = document.createElement("li");
-            var inputValue = document.getElementById("myInput").value;
-            var numValue = document.getElementById("numItem").value;
-            var t = document.createTextNode(inputValue);
-
-            //console.log(t);
-            //li.appendChild(t);
-            // $("#listUL").append('<li>'+inputValue+'<span class="quantity"><input id="numberOfItem" type="number" value="1"> </span><span class="close">×</span></li>');
-            if (inputValue === '') {
-              alert("You must write something!");
-            } else {
-              //document.getElementById("listUL").appendChild(li);
-              if (numItem === '') {
-                $("#listUL").append('<li>'+inputValue+ '<span class="close">×</span></li>');
-              } else {
-                $("#listUL").append('<li>'+inputValue+ " (" + numValue + ")" + '<span class="close">×</span></li>');
-              }
-            }
-            document.getElementById("myInput").value = "";
-            document.getElementById("numItem").value = "";
-
-            for (i = 0; i < close.length; i++) {
-              close[i].onclick = function() {
-                var div = this.parentElement;
-                div.style.display = "none";
-              }
-            }
-          }
-        </script>
 
       </p>
     </div>

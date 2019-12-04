@@ -1,19 +1,22 @@
 <?php
-  $user = $_POST["username"];
-  $item = $_POST["foodname"];
-  $quanity = $_POST["amount"];
+echo $_POST["myInput"];
+$user = $_POST["username"];
+$item = $_POST["foodname"];
+$quanity = $_POST["amount"];
 
-  include 'addTo_GroceryList.php';
+include 'addTo_groceryList.php';
 
-  if(isItemExists($user, $item) > 0)
-  {
-    onGroceryListInsertFoodItem($user, $item, $quantity);
-  }
-  else
-  {
-    onGroceryListUpdateFoodItem($user, $item, $quantity);
-  }
 
-  $conn->close();
+if(isItemExists($user, $_POST["myInput"]) > 0)
+{
+  onGroceryListInsertFoodItem($user, $_POST["myInput"], $_POST["numItem"]);
+}
+else
+{
+  echo "checking if "+ $_POST["myInput"]+"is in db";
+  onGroceryListUpdateFoodItem($user, $_POST["myInput"], $_POST["numItem"]);
+}
+
+$conn->close();
 
 ?>

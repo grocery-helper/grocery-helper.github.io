@@ -92,7 +92,7 @@ text-align: center;
 float: left;
 width: 33.33%;
 padding: 10px;
-height: 800px; /* Should be removed. Only for demonstration */
+height: 10000000px; /* Should be removed. Only for demonstration */
 }
 
 /* Clear floats after the columns */
