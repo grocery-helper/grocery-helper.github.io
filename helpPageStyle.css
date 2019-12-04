@@ -211,6 +211,13 @@ border-radius: 0;
 background-color: #bbb;
 }
 
+.btnHolder{
+  text-align: center;
+  margin-left: 39%;
+  margin-right: 45%;
+  width: 100%;
+  height: 7%;
+}
 
 .quantity{
   float:right;
