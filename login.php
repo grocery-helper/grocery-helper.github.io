@@ -62,4 +62,5 @@ function doPasswordsMatch($password, $pass){
   } else {
     echo('error');
   }
+mysqli_close($conn);
 ?>
