@@ -172,8 +172,8 @@ if ($conn->connect_error) {
 					<p>Here are items you can add</p>
 
 					<?php
+					echo "<form action='' method='POST'>";
 					echo "<table id=\"groceryList\">";
-					echo "<th></th>";
 					echo "<th>✅</th>";
 					echo "<th>🗑️</th>";
 					if(isset($_POST['submit']))
@@ -187,14 +187,16 @@ if ($conn->connect_error) {
 
 								echo "<tr>";
 								echo "<td>";
+								echo "<input type=\"checkbox\" name=\"check_list[]\"><label>";
 								print "$item";
+								echo "</label>";
 								echo "</td>";
 
 								//$result = mysqli_query("SELECT ExpDate FROM FoodItems WHERE User = $user AND FoodName= '$item'");
 								$result = mysqli_query($conn, "SELECT * FROM FoodItems WHERE FoodName= '$item'");
 								$row = mysqli_fetch_assoc($result);
 
-								echo "<td><input type=\"checkbox\" class = \"use-address-toInventory\"></td>";
+								//echo "<td><input type=\"checkbox\" class = \"use-address-toInventory\"></td>";
 								echo "<td><input type=\"checkbox\" onclick=\"deleteRow(this)\"/></td>";
 								echo "</tr>";
 
@@ -213,33 +215,45 @@ if ($conn->connect_error) {
 						}
 					}
 					echo "</table>";
-					?>
+					//echo "<input type='submit' name='submitGrocery' value='Add to Inventory!' align='middle' class='addBtn'/>";
+					echo "</form>";
 
-					<script>
 
-					$('.use-address-toInventory').click(function () {
-						var id = $(this).closest("tr").find('td:eq(0)').text();
-						addToInventory(id);
-					});
+					if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+					    // Something posted
+					    if (isset($_POST['submitGrocery'])) {
 
-					function addToInventory(id){
-						// Add to favorites table
-						var table = document.getElementById("inventoryList");
-						var row = table.insertRow(1);
-						var starBullet = row.insertCell(0);
-						var itemName = row.insertCell(1);
-						var addTrash = row.insertCell(2);
-						starBullet.innerHTML = "⭐";
-						itemName.innerHTML = id;
-						console.log(id);
-						addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\"/>"
-						//also add to grocery list
-						var ul = document.getElementById("listUL");
-						var li = document.createElement("li");
-						$("#listUL").append('<li>'+String(id)+'<span class="quantity"><span class="close">×</span><input id="numberOfItem" type="number" value="1"></li>');
+								echo 'var table = document.getElementById("inventoryList");';
+								echo 'var row = table.insertRow(1);';
+								echo 'var newItem = row.insertCell(0);';
+								echo 'var expDate = row.insertCell(1);';
+								echo 'var addStar = row.insertCell(2);';
+								echo 'var addTrash = row.insertCell(3);';
+								echo '';
 
+								echo '';
+
+								echo 'var getItem = ev.target.innerHTML.toString();';
+								echo 'var i = 0;';
+								echo 'var addItem ="";';
+								echo 'while (getItem[i] != '<') {';
+								echo 'addItem = addItem.concat(getItem[i]);';
+								echo 'i++;';
+								echo '}';
+								echo '';
+								echo 'newItem.innerHTML = String(addItem);';
+
+								echo 'expDate.innerHTML = "  days left";';
+								echo 'addStar.innerHTML = "<input type=\"checkbox\" class =\"use-address\">";';
+								echo 'addTrash.innerHTML = "<input type=\"checkbox\" onclick=\"deleteRow(this)\">";';
+								echo 'console.log(row);';
+
+					    } else {
+					        // Assume btnSubmit
+					    }
 					}
-					</script>
+
+					?>
 
 				</div>
 				<!-- inventory -->
