@@ -60,13 +60,17 @@ if ($conn->connect_error) {
 
 			<ul class="navbar-nav stroke">
 				<li class="navbar-item">
-					<a class="nav-link" href="index.html">Home</a>
+					<a class="nav-link" href="index.php">Home</a>
 				</li>
 				<li class="navbar-item">
-					<a class="nav-link" href="helpPage.html">Help</a>
+					<a class="nav-link" href="helpPage.php">Help</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="viewLists.html">My Lists</a>
+					<a class="nav-link" href="viewLists.php">My Lists</a>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item">
+					<a class="nav-link" href="phpCustom2.php">Coming Soon!</a>
 				</li>
 				<li class="nav-item">
 					<?php
@@ -84,6 +88,7 @@ if ($conn->connect_error) {
 			</ul>
 		</div>
 	</nav>
+
 
 	<div class="container-fluid">
 		<img src="logo.png" class="centerSmall">
