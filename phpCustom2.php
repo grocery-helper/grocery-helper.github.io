@@ -311,9 +311,9 @@ if ($conn->connect_error) {
 		<h2><center>Favorites</center></h2>
 
 		<table id="favoritesList">
-			<col width="5">
+			<col width="30">
 			<col width="200" style="text-align:left">
-			<col width="30" style="text-align:right">
+			<col width="30" style="text-align:left">
 			<tr>
 				<th></th>
 				<th></th>

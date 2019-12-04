@@ -96,24 +96,13 @@ if ($conn->connect_error) {
 		<img src="logo.png" class="centerSmall">
 
 		<div class="containerSmall">
-			<h3>Welcome to Grocery Helper.</h3>
-			<p>Making lists with Grocery Helper is easy!</p>
-			<p>Press on any help button to learn more about that feature.</p>
+			<h3>Your Grocery Helper List.</h3>
 		</div>
 
 		<div class="row">
 			<!-- grocery list -->
 			<div class="column" style="background-color:rgb(211, 236, 232)">
-				<h2><center>Your List<br>
-					<a href="#" data-toggle="popover" title="Making your lists"
-					data-content="This is where you can add items to your list!
-					Select the items you want to purchase.
-					When you purchase your item, it will be saved in your inventory.">
-					<button type="button" class="btn btn-info">Help me make a list!</button></a>
-
-				</center></h2>
-
-				<p>Here are items you can add</p>
+				<h2><center>Your List<br></center></h2>
 
 				<?php
 				include 'db_connection.php';
@@ -167,13 +156,7 @@ if ($conn->connect_error) {
 			</div>
 			<!-- inventory -->
 			<div class="column" style="background-color:rgb(188, 237, 228);">
-				<h2><center>Inventory<br>
-					<a href="#" data-toggle="popover" title="Your Inventory"
-					data-content="This is where you can view items that you currently have.
-					starring items (⭐) adds them to your favorites list.
-					When you run out of an item, remove it from your list (🗑️).">
-					<button type="button" class="btn btn-info">What's in my inventory?</button></a></center></h2>
-					<p>Items you already have.</p>
+				<h2><center>Inventory<br></center></h2>
 
 					<table id="inventoryList">
 						<tr>
@@ -271,12 +254,7 @@ if ($conn->connect_error) {
 
 				<!-- favorites -->
 				<div class="column" style="background-color:rgb(157, 236, 222);">
-					<h2><center>Favorites<center>
-						<a href="#" data-toggle="popover" title="Your Favorites"
-						data-content="These items will always be added to your grocery list.
-						You can add items to your by starring them and remove them at any time.">
-						<button type="button" class="btn btn-info">What are your favorites?</button></a></center></h2>
-						<p>Your favorte items</p>
+					<h2><center>Favorites</center></h2>
 
 						<table id="favoritesList">
 							<col width="30">
