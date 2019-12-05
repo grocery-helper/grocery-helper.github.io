@@ -41,7 +41,7 @@ A web application to enhance your grocery shopping experience by making it more 
 
 # Vision
 - Originally, we were trying to build this quarter-long project as an iOS app but struggled with connecting our database to the controller. So, ideally we would pivot back to creating an iPhone app since Grocery Helper's main goal was to increase convenience.
-- Embed the python script for reminders to actually push desktop notifications about "items expiring today" like Google Calendar instead of locally running script of Mac's Automator App.
+- Embed the python [script](https://github.com/tanya-sonker/grocery-helper.github.io/blob/phpMaster/README-reminders.md) for reminders to actually push desktop notifications about "items expiring today" like Google Calendar instead of locally running script of Mac's Automator App.
 - Allow for adding custom items.
 - Adding a calendar view for when items are about to expire.
 - Expanding categories to suggest based on user's past behavior of adding custom items (paper towels, etc.).
