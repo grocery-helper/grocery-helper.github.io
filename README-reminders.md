@@ -9,4 +9,4 @@
 - Hit the Run button on the top right and look our for your desktop notification!
 
 Find the Python script [here](https://github.com/tanya-sonker/grocery-helper.github.io/blob/phpMaster/reminders.py)!
-[!demo](https://github.com/tanya-sonker/grocery-helper.github.io/blob/phpMaster/reminders.png)
+![demo](https://github.com/tanya-sonker/grocery-helper.github.io/blob/phpMaster/reminders.png)
